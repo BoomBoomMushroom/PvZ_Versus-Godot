@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dt6dkbsd8nh0c" path="res://assets/player_cursor.png" id="2_jhlc7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y48f5"]
-size = Vector2(92, 92)
+size = Vector2(100, 100)
 
 [node name="TeamCursor" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_04ond")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

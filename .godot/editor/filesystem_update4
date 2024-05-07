@@ -1,0 +1,3 @@
+res://scenes/game.tscn
+res://scripts/player_cursor.gd
+res://scenes/team_cursor.tscn
