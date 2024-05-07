@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cataj7p12ipe"]
+
+[ext_resource type="Script" path="res://scripts/player_cursor.gd" id="1_04ond"]
+[ext_resource type="Texture2D" uid="uid://dt6dkbsd8nh0c" path="res://assets/player_cursor.png" id="2_jhlc7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y48f5"]
+size = Vector2(92, 92)
+
+[node name="TeamCursor" type="CharacterBody2D"]
+script = ExtResource("1_04ond")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.254005, 0.415387, 0.752474, 1)
+z_index = 10
+texture = ExtResource("2_jhlc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y48f5")
