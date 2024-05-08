@@ -20,7 +20,7 @@ func _process(delta):
 	sinceLastDrop -= delta
 	
 	if sinceLastDrop < 0:
-		sinceLastDrop = randf_range(1, 5)
+		sinceLastDrop = randf_range(10, 50)
 		
 		spawnDrop("Team1", 50)
 		spawnDrop("Team2", 50)
@@ -28,7 +28,7 @@ func _process(delta):
 func spawnDrop(teamName, value):
 	var newDrop = CURRENCY_DROP_PREFAB.instantiate()
 	newDrop.position.x = randf_range(-150, 150)
-	newDrop.position.y = 0
+	newDrop.position.y = 150 + randf_range(-10, 10)
 	newDrop.name = teamName + "_" + str(value)
 	newDrop.currency_manager = currency_manager
 	
