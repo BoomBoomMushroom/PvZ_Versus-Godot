@@ -43,7 +43,7 @@ func spawnDrop(teamName, value):
 
 
 func collectMoney(isTeam1, amount):
-	print("Collecting " + str(amount) + " for isTeam1: " + str(isTeam1))
+	#print("Collecting " + str(amount) + " for isTeam1: " + str(isTeam1))
 	if isTeam1:
 		team1Currency += amount
 	else:
