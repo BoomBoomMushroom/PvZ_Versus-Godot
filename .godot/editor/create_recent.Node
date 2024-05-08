@@ -1,7 +1,7 @@
 CollisionShape2D
+Sprite2D
+CharacterBody2D
 Area2D
 Node
 Label
 Timer
-CharacterBody2D
-Sprite2D

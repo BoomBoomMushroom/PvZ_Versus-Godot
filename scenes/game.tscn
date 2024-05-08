@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8nnp1k3q3jlu"]
+[gd_scene load_steps=8 format=3 uid="uid://b8nnp1k3q3jlu"]
 
 [ext_resource type="PackedScene" uid="uid://cataj7p12ipe" path="res://scenes/team_cursor.tscn" id="1_6o8ip"]
 [ext_resource type="Texture2D" uid="uid://d2ityn6i7pmyi" path="res://assets/white_pixel.png" id="2_alvu4"]
+[ext_resource type="PackedScene" uid="uid://cprebflt2bt2r" path="res://scenes/grid_manager.tscn" id="4_2ptvc"]
 [ext_resource type="PackedScene" uid="uid://c6ulca0pk0ig3" path="res://scenes/currency_manager.tscn" id="4_dmb32"]
 [ext_resource type="PackedScene" uid="uid://kwhnbnqv6yf8" path="res://scenes/tile_collision.tscn" id="4_j1vgu"]
 
@@ -41,10 +42,350 @@ sources/0 = SubResource("TileSetAtlasSource_1qgvo")
 [node name="Cursors" type="Node" parent="."]
 
 [node name="Team1Cursor" parent="Cursors" instance=ExtResource("1_6o8ip")]
-position = Vector2(-93, 8)
+unique_name_in_owner = true
+position = Vector2(-160, 0)
 
 [node name="Team2Cursor" parent="Cursors" instance=ExtResource("1_6o8ip")]
-position = Vector2(75, -8)
+unique_name_in_owner = true
+position = Vector2(160, 0)
+
+[node name="GridColliders" type="Node" parent="."]
+
+[node name="Row1" type="Node" parent="GridColliders"]
+
+[node name="1,1" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(-136, -40)
+
+[node name="1,2" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(-120, -40)
+
+[node name="1,3" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(-104, -40)
+
+[node name="1,4" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(-88, -40)
+
+[node name="1,5" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(-72, -40)
+
+[node name="1,6" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(-56, -40)
+
+[node name="1,7" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(-40, -40)
+
+[node name="1,8" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(-24.0001, -40)
+
+[node name="1,9" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(-8.00006, -40)
+
+[node name="1,10" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(7.99996, -40)
+
+[node name="1,11" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(23.9999, -40)
+
+[node name="1,12" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(39.9999, -40)
+
+[node name="1,13" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(55.9999, -40)
+
+[node name="1,14" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(71.9999, -40)
+
+[node name="1,15" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(87.9999, -40)
+
+[node name="1,16" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(104, -40)
+
+[node name="1,17" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(120, -40)
+
+[node name="1,18" parent="GridColliders/Row1" instance=ExtResource("4_j1vgu")]
+position = Vector2(136, -40)
+
+[node name="Row2" type="Node" parent="GridColliders"]
+
+[node name="2,1" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(-136, -24)
+
+[node name="2,2" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(-120, -24)
+
+[node name="2,3" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(-104, -24)
+
+[node name="2,4" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(-88, -24)
+
+[node name="2,5" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(-72, -24)
+
+[node name="2,6" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(-56, -24)
+
+[node name="2,7" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(-40, -24)
+
+[node name="2,8" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(-24.0001, -24)
+
+[node name="2,9" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(-8.00006, -24)
+
+[node name="2,10" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(7.99994, -24)
+
+[node name="2,11" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(23.9999, -24)
+
+[node name="2,12" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(39.9999, -24)
+
+[node name="2,13" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(55.9999, -24)
+
+[node name="2,14" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(71.9999, -24)
+
+[node name="2,15" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(87.9999, -24)
+
+[node name="2,16" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(104, -24)
+
+[node name="2,17" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(120, -24)
+
+[node name="2,18" parent="GridColliders/Row2" instance=ExtResource("4_j1vgu")]
+position = Vector2(136, -24)
+
+[node name="Row3" type="Node" parent="GridColliders"]
+
+[node name="3,1" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(-136, -8.00001)
+
+[node name="3,2" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(-120, -8.00001)
+
+[node name="3,3" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(-104, -8.00001)
+
+[node name="3,4" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(-88, -8.00001)
+
+[node name="3,5" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(-72, -8.00001)
+
+[node name="3,6" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(-56, -8.00001)
+
+[node name="3,7" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(-40, -8.00001)
+
+[node name="3,8" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(-24.0001, -8.00001)
+
+[node name="3,9" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(-8.00006, -8.00001)
+
+[node name="3,10" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(7.99996, -8.00001)
+
+[node name="3,11" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(23.9999, -8.00001)
+
+[node name="3,12" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(39.9999, -8.00001)
+
+[node name="3,13" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(55.9999, -8.00001)
+
+[node name="3,14" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(71.9999, -8.00001)
+
+[node name="3,15" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(87.9999, -8.00001)
+
+[node name="3,16" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(104, -8.00001)
+
+[node name="3,17" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(120, -8.00001)
+
+[node name="3,18" parent="GridColliders/Row3" instance=ExtResource("4_j1vgu")]
+position = Vector2(136, -8.00001)
+
+[node name="Row4" type="Node" parent="GridColliders"]
+
+[node name="4,1" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(-136, 7.99999)
+
+[node name="4,2" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(-120, 7.99999)
+
+[node name="4,3" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(-104, 7.99999)
+
+[node name="4,4" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(-88, 7.99999)
+
+[node name="4,5" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(-72, 7.99999)
+
+[node name="4,6" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(-56, 7.99999)
+
+[node name="4,7" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(-40, 7.99999)
+
+[node name="4,8" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(-24.0001, 7.99999)
+
+[node name="4,9" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(-8.00006, 7.99999)
+
+[node name="4,10" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(7.99997, 7.99999)
+
+[node name="4,11" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(23.9999, 7.99999)
+
+[node name="4,12" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(39.9999, 7.99999)
+
+[node name="4,13" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(55.9999, 7.99999)
+
+[node name="4,14" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(71.9999, 7.99999)
+
+[node name="4,15" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(87.9999, 7.99999)
+
+[node name="4,16" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(104, 7.99999)
+
+[node name="4,17" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(120, 7.99999)
+
+[node name="4,18" parent="GridColliders/Row4" instance=ExtResource("4_j1vgu")]
+position = Vector2(136, 7.99999)
+
+[node name="Row5" type="Node" parent="GridColliders"]
+
+[node name="5,1" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(-136, 24)
+
+[node name="5,2" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(-120, 24)
+
+[node name="5,3" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(-104, 24)
+
+[node name="5,4" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(-88, 24)
+
+[node name="5,5" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(-72, 24)
+
+[node name="5,6" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(-56, 24)
+
+[node name="5,7" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(-40, 24)
+
+[node name="5,8" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(-24.0001, 24)
+
+[node name="5,9" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(-8.00006, 24)
+
+[node name="5,10" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(7.99999, 24)
+
+[node name="5,11" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(24, 24)
+
+[node name="5,12" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(39.9999, 24)
+
+[node name="5,13" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(56, 24)
+
+[node name="5,14" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(72, 24)
+
+[node name="5,15" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(87.9999, 24)
+
+[node name="5,16" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(104, 24)
+
+[node name="5,17" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(120, 24)
+
+[node name="5,18" parent="GridColliders/Row5" instance=ExtResource("4_j1vgu")]
+position = Vector2(136, 24)
+
+[node name="Row6" type="Node" parent="GridColliders"]
+
+[node name="6,1" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(-136, 40)
+
+[node name="6,2" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(-120, 40)
+
+[node name="6,3" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(-104, 40)
+
+[node name="6,4" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(-88, 40)
+
+[node name="6,5" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(-72, 40)
+
+[node name="6,6" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(-56, 40)
+
+[node name="6,7" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(-40, 40)
+
+[node name="6,8" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(-24.0001, 40)
+
+[node name="6,9" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(-8.00006, 40)
+
+[node name="6,10" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(7.99999, 40)
+
+[node name="6,11" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(24, 40)
+
+[node name="6,12" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(39.9999, 40)
+
+[node name="6,13" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(56, 40)
+
+[node name="6,14" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(72, 40)
+
+[node name="6,15" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(87.9999, 40)
+
+[node name="6,16" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(104, 40)
+
+[node name="6,17" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(120, 40)
+
+[node name="6,18" parent="GridColliders/Row6" instance=ExtResource("4_j1vgu")]
+position = Vector2(136, 40)
 
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
@@ -55,8 +396,10 @@ tile_set = SubResource("TileSet_4i7sb")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 131072, 1, 65536, 196608, 1, 131072, 131072, 1, 1, 327680, 2, 65537, 262144, 2, 131073, 327680, 2, 2, 262144, 2, 65538, 327680, 2, 131074, 262144, 2, 3, 327680, 2, 65539, 262144, 2, 131075, 327680, 2, 4, 262144, 2, 65540, 327680, 2, 131076, 262144, 2, 5, 327680, 2, 65541, 262144, 2, 131077, 327680, 2, 6, 262144, 2, 65542, 327680, 2, 131078, 262144, 2, 7, 327680, 2, 65543, 262144, 2, 131079, 327680, 2, 8, 262144, 2, 65544, 327680, 2, 131080, 262144, 2, -131081, 0, 0, -65545, 65536, 0, -9, 0, 0, 65527, 65536, 0, 131063, 0, 0, 196599, 65536, 0, -131080, 65536, 0, -65544, 0, 0, -8, 65536, 0, 65528, 0, 0, 131064, 65536, 0, 196600, 0, 0, -131079, 0, 0, -65543, 65536, 0, -7, 0, 0, 65529, 65536, 0, 131065, 0, 0, 196601, 65536, 0, -131078, 65536, 0, -65542, 0, 0, -6, 65536, 0, 65530, 0, 0, 131066, 65536, 0, 196602, 0, 0, -131077, 0, 0, -65541, 65536, 0, -5, 0, 0, 65531, 65536, 0, 131067, 0, 0, 196603, 65536, 0, -131076, 65536, 0, -65540, 0, 0, -4, 65536, 0, 65532, 0, 0, 131068, 65536, 0, 196604, 0, 0, -131075, 0, 0, -65539, 65536, 0, -3, 0, 0, 65533, 65536, 0, 131069, 0, 0, 196605, 65536, 0, -131074, 65536, 0, -65538, 0, 0, -2, 65536, 0, 65534, 0, 0, 131070, 65536, 0, 196606, 0, 0, -131073, 131072, 1, -65537, 196608, 1, -1, 131072, 1, 65535, 196608, 1, 131071, 131072, 1, 196607, 196608, 1, -196608, 196608, 1, -131072, 131072, 1, -65536, 196608, 1, -196607, 262144, 2, -131071, 327680, 2, -65535, 262144, 2, -196606, 327680, 2, -131070, 262144, 2, -65534, 327680, 2, -196605, 262144, 2, -131069, 327680, 2, -65533, 262144, 2, -196604, 327680, 2, -131068, 262144, 2, -65532, 327680, 2, -196603, 262144, 2, -131067, 327680, 2, -65531, 262144, 2, -196602, 327680, 2, -131066, 262144, 2, -65530, 327680, 2, -196601, 262144, 2, -131065, 327680, 2, -65529, 262144, 2, -196600, 327680, 2, -131064, 262144, 2, -65528, 327680, 2)
 
-[node name="CurrencyManager" parent="." instance=ExtResource("4_dmb32")]
+[node name="Managers" type="Node" parent="."]
+
+[node name="GridManager" parent="Managers" instance=ExtResource("4_2ptvc")]
 unique_name_in_owner = true
 
-[node name="1,1" parent="." instance=ExtResource("4_j1vgu")]
-position = Vector2(-136, -40)
+[node name="CurrencyManager" parent="Managers" instance=ExtResource("4_dmb32")]
+unique_name_in_owner = true
