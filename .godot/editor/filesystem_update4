@@ -1,3 +1,5 @@
+res://scripts/currency_drop.gd
+res://scenes/currency_drop.tscn
 res://scenes/game.tscn
-res://scripts/player_cursor.gd
 res://scenes/team_cursor.tscn
+res://scenes/currency_manager.tscn

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg4ai4c7sq1ds"]
+
+[ext_resource type="Script" path="res://scripts/currency_drop.gd" id="1_m2xsg"]
+[ext_resource type="Texture2D" uid="uid://d2ityn6i7pmyi" path="res://assets/white_pixel.png" id="1_v0ckd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x71yv"]
+size = Vector2(100, 100)
+
+[node name="CurrencyDrop" type="CharacterBody2D"]
+scale = Vector2(0.16, 0.16)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_m2xsg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v0ckd")
+
+[node name="CharacterCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x71yv")
+
+[node name="Collect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollectCollisionShape" type="CollisionShape2D" parent="Collect"]
+shape = SubResource("RectangleShape2D_x71yv")
+
+[connection signal="body_entered" from="Collect" to="." method="_on_collect_body_entered"]
