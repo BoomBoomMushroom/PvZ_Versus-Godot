@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8nnp1k3q3jlu"]
+[gd_scene load_steps=6 format=3 uid="uid://b8nnp1k3q3jlu"]
 
 [ext_resource type="PackedScene" uid="uid://cataj7p12ipe" path="res://scenes/team_cursor.tscn" id="1_6o8ip"]
 [ext_resource type="Texture2D" uid="uid://d2ityn6i7pmyi" path="res://assets/white_pixel.png" id="2_alvu4"]
-[ext_resource type="PackedScene" uid="uid://bg4ai4c7sq1ds" path="res://scenes/currency_drop.tscn" id="3_txcmx"]
 [ext_resource type="PackedScene" uid="uid://c6ulca0pk0ig3" path="res://scenes/currency_manager.tscn" id="4_dmb32"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qgvo"]
@@ -31,16 +30,14 @@ position = Vector2(-93, 8)
 [node name="Team2Cursor" parent="." instance=ExtResource("1_6o8ip")]
 position = Vector2(75, -8)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
 zoom = Vector2(2.5, 2.5)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_4i7sb")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 131072, 1, 65536, 196608, 1, 131072, 131072, 1, 1, 327680, 2, 65537, 262144, 2, 131073, 327680, 2, 2, 262144, 2, 65538, 327680, 2, 131074, 262144, 2, 3, 327680, 2, 65539, 262144, 2, 131075, 327680, 2, 4, 262144, 2, 65540, 327680, 2, 131076, 262144, 2, 5, 327680, 2, 65541, 262144, 2, 131077, 327680, 2, 6, 262144, 2, 65542, 327680, 2, 131078, 262144, 2, 7, 327680, 2, 65543, 262144, 2, 131079, 327680, 2, 8, 262144, 2, 65544, 327680, 2, 131080, 262144, 2, -131081, 0, 0, -65545, 65536, 0, -9, 0, 0, 65527, 65536, 0, 131063, 0, 0, 196599, 65536, 0, -131080, 65536, 0, -65544, 0, 0, -8, 65536, 0, 65528, 0, 0, 131064, 65536, 0, 196600, 0, 0, -131079, 0, 0, -65543, 65536, 0, -7, 0, 0, 65529, 65536, 0, 131065, 0, 0, 196601, 65536, 0, -131078, 65536, 0, -65542, 0, 0, -6, 65536, 0, 65530, 0, 0, 131066, 65536, 0, 196602, 0, 0, -131077, 0, 0, -65541, 65536, 0, -5, 0, 0, 65531, 65536, 0, 131067, 0, 0, 196603, 65536, 0, -131076, 65536, 0, -65540, 0, 0, -4, 65536, 0, 65532, 0, 0, 131068, 65536, 0, 196604, 0, 0, -131075, 0, 0, -65539, 65536, 0, -3, 0, 0, 65533, 65536, 0, 131069, 0, 0, 196605, 65536, 0, -131074, 65536, 0, -65538, 0, 0, -2, 65536, 0, 65534, 0, 0, 131070, 65536, 0, 196606, 0, 0, -131073, 131072, 1, -65537, 196608, 1, -1, 131072, 1, 65535, 196608, 1, 131071, 131072, 1, 196607, 196608, 1, -196608, 196608, 1, -131072, 131072, 1, -65536, 196608, 1, -196607, 262144, 2, -131071, 327680, 2, -65535, 262144, 2, -196606, 327680, 2, -131070, 262144, 2, -65534, 327680, 2, -196605, 262144, 2, -131069, 327680, 2, -65533, 262144, 2, -196604, 327680, 2, -131068, 262144, 2, -65532, 327680, 2, -196603, 262144, 2, -131067, 327680, 2, -65531, 262144, 2, -196602, 327680, 2, -131066, 262144, 2, -65530, 327680, 2, -196601, 262144, 2, -131065, 327680, 2, -65529, 262144, 2, -196600, 327680, 2, -131064, 262144, 2, -65528, 327680, 2)
-
-[node name="Team1_100" parent="." instance=ExtResource("3_txcmx")]
-position = Vector2(-12, -73)
 
 [node name="CurrencyManager" parent="." instance=ExtResource("4_dmb32")]
 unique_name_in_owner = true

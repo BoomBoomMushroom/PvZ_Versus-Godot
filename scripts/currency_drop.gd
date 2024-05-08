@@ -4,7 +4,20 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var fallSpeed = .01;
 
-@onready var currency_manager = %CurrencyManager
+var currency_manager
+@onready var sprite_2d = $Sprite2D
+
+const SUN_DROP_SPRITE = preload("res://assets/plants/sun_drop.png")
+const ZOMBIE_DROP_SPRITE = preload("res://assets/zombie/zombie_drop.png")
+
+func _ready():
+	var nameLower = name.to_lower()
+	sprite_2d = $Sprite2D
+	
+	if "team1" in nameLower:
+		sprite_2d.texture = SUN_DROP_SPRITE
+	elif "team2" in nameLower:
+		sprite_2d.texture = ZOMBIE_DROP_SPRITE
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -15,8 +28,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_collect_body_entered(body):
-	#print(name)
-	#print(body.name)
 	# Format Name Like this:
 	# TeamX_Y
 	# X = team number
@@ -29,8 +40,10 @@ func _on_collect_body_entered(body):
 	
 	if isTeam1 and "team1" in body.name.to_lower():
 		correctPicker = true
-	if isTeam1==false and "team2" in body.name.to_lower():
+	if isTeam1 == false and "team2" in body.name.to_lower():
 		correctPicker = true
+	
+	if correctPicker == false: return
 	
 	var amount = int(nameSplits[1])
 	

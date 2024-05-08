@@ -30,7 +30,10 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
-
-
-
-
+	
+	var scale = transform.get_scale()
+	var halfWidth = 8
+	var halfHeight = 8
+	
+	position.x = clampf(position.x, -230+halfWidth, 230-halfWidth)
+	position.y = clampf(position.y, -130+halfHeight, 130-halfHeight)
