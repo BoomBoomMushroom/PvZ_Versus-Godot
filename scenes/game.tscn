@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8nnp1k3q3jlu"]
+[gd_scene load_steps=15 format=3 uid="uid://b8nnp1k3q3jlu"]
 
 [ext_resource type="PackedScene" uid="uid://cataj7p12ipe" path="res://scenes/team_cursor.tscn" id="1_6o8ip"]
 [ext_resource type="Texture2D" uid="uid://d2ityn6i7pmyi" path="res://assets/white_pixel.png" id="2_alvu4"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cymyc8ta0yfgt" path="res://scenes/Plants/peashooter.tscn" id="6_gajhh"]
 [ext_resource type="PackedScene" uid="uid://bbvgvfx7cl8w5" path="res://scenes/kill_area.tscn" id="7_36u52"]
 [ext_resource type="PackedScene" uid="uid://ncslmep1p7r2" path="res://scenes/Zombie/normal_zombie.tscn" id="8_n0gic"]
+[ext_resource type="Texture2D" uid="uid://ca1p7s5628y0p" path="res://assets/plants/sun_drop.png" id="10_7cucx"]
+[ext_resource type="FontFile" uid="uid://neswjwn8jlm3" path="res://assets/Fonts/PixelOperator8.ttf" id="10_8nevf"]
+[ext_resource type="PackedScene" uid="uid://c1pwp7g737tpl" path="res://scenes/place_plant_button.tscn" id="12_1a6tm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qgvo"]
 texture = ExtResource("2_alvu4")
@@ -434,4 +437,45 @@ position = Vector2(-136, -40)
 
 [node name="NormalZombie" parent="." instance=ExtResource("8_n0gic")]
 position = Vector2(136, -48)
-metadata/speed = 32.0
+metadata/speed = 16.0
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="UI"]
+offset_left = -189.0
+offset_top = -111.0
+offset_right = -41.0
+offset_bottom = -88.0
+theme_override_fonts/font = ExtResource("10_8nevf")
+theme_override_font_sizes/font_size = 16
+text = "100"
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI"]
+position = Vector2(-200, -100)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("10_7cucx")
+
+[node name="PlacePlantButton" parent="." instance=ExtResource("12_1a6tm")]
+position = Vector2(-182, -63)
+scale = Vector2(0.3, 0.3)
+
+[node name="PlacePlantButton2" parent="." instance=ExtResource("12_1a6tm")]
+position = Vector2(-182, -31)
+scale = Vector2(0.3, 0.3)
+
+[node name="PlacePlantButton3" parent="." instance=ExtResource("12_1a6tm")]
+position = Vector2(-182, 0.999999)
+scale = Vector2(0.3, 0.3)
+
+[node name="PlacePlantButton4" parent="." instance=ExtResource("12_1a6tm")]
+position = Vector2(-182, 33)
+scale = Vector2(0.3, 0.3)
+
+[node name="PlacePlantButton5" parent="." instance=ExtResource("12_1a6tm")]
+position = Vector2(-182, 65)
+scale = Vector2(0.3, 0.3)
+
+[node name="PlacePlantButton6" parent="." instance=ExtResource("12_1a6tm")]
+position = Vector2(-182, 97)
+scale = Vector2(0.3, 0.3)

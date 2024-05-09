@@ -66,8 +66,26 @@ const toughnessRates = {
 }
 
 const zombies = {
-	"Basic Zombie": {"Toughness": toughnessRates["Average"], "Health": 190, "Speed": speeds["Basic"]},
-	"Conehead Zombie": {"Toughness": toughnessRates["Protected"], "Health": 190+370, "Speed": speeds["Basic"]},
-	"Buckethead Zombie": {"Toughness": toughnessRates["Hardened"], "Health": 190+1100, "Speed": speeds["Basic"]},
-	"Flag Zombie": {"Toughness": toughnessRates["Average"], "Health": 190, "Speed": speeds["Basic"]},
+	"Basic Zombie": {"Toughness": toughnessRates["Average"], "Health": 190, "Speed": speeds["Basic"], "Damage": 100},
+	"Conehead Zombie": {"Toughness": toughnessRates["Protected"], "Health": 190+370, "Speed": speeds["Basic"], "Damage": 100},
+	"Buckethead Zombie": {"Toughness": toughnessRates["Hardened"], "Health": 190+1100, "Speed": speeds["Basic"], "Damage": 100},
+	"Flag Zombie": {"Toughness": toughnessRates["Average"], "Health": 190, "Speed": speeds["Basic"], "Damage": 100},
+}
+
+
+# Plants | From https://plantsvszombies.fandom.com/wiki/Plants_(PvZ)
+
+var placeRechargeTime = { # in seconds
+	"Fast": 7.5,
+	"Slow": 30,
+	"Very Slow": 50,
+}
+
+var plants = {
+	"Peashooter": {"Health": 300, "AttackDamage": 20, "AttackRecharge": 1.425, "SunCost": 100, "PlaceRecharge": placeRechargeTime["Fast"]},
+	"Sunflower": {"Health": 300, "AttackDamage": 0, "AttackRecharge": 24.25, "SunCost": 50, "PlaceRecharge": placeRechargeTime["Fast"]},
+	"Cherry Bomb": {"Health": -1, "AttackDamage": 1800, "AttackRecharge": 1.2, "SunCost": 150, "PlaceRecharge": placeRechargeTime["Very Slow"]},
+	"Wall-nut": {"Health": 4000, "AttackDamage": 0, "AttackRecharge": 0, "SunCost": 50, "PlaceRecharge": placeRechargeTime["Slow"]},
+	"Potato Mine": {"Health": 300, "AttackDamage": 1800, "AttackRecharge": 15, "SunCost": 25, "PlaceRecharge": placeRechargeTime["Slow"]},
+	"Chomper": {"Health": 300, "AttackDamage": -1, "AttackRecharge": 20, "SunCost": 150, "PlaceRecharge": placeRechargeTime["Fast"]},
 }

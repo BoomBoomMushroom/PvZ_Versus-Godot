@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1pwp7g737tpl"]
+
+[ext_resource type="Script" path="res://scripts/button_hover.gd" id="1_bstq4"]
+[ext_resource type="Texture2D" uid="uid://d2ityn6i7pmyi" path="res://assets/white_pixel.png" id="1_e3m6m"]
+[ext_resource type="FontFile" uid="uid://cxpmtwtvah0uw" path="res://assets/Fonts/PixelOperator8-Bold.ttf" id="2_8idbj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbo02"]
+size = Vector2(200, 100)
+
+[node name="PlacePlantButton" type="Area2D"]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_bstq4")
+
+[node name="ShadowBg" type="Sprite2D" parent="."]
+modulate = Color(0.0705882, 0.0705882, 0.0705882, 0.247059)
+scale = Vector2(2, 1)
+texture = ExtResource("1_e3m6m")
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(-50, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_e3m6m")
+
+[node name="Price" type="Label" parent="."]
+offset_top = -16.0
+offset_right = 96.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("2_8idbj")
+theme_override_font_sizes/font_size = 32
+text = "100"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fbo02")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

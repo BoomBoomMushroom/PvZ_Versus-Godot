@@ -1,9 +1,10 @@
-Node
 CollisionShape2D
-Area2D
+Label
 Sprite2D
+Area2D
+RichTextLabel
+Node
 CharacterBody2D
 RayCast2D
 Node2D
-Label
 Timer
