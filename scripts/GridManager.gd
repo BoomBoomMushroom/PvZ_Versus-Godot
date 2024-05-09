@@ -6,7 +6,7 @@ extends Node
 var team1 = []
 
 func _process(delta):
-	print(getClosest(team1, team1Cursor.position))
+	#print(getClosest(team1, team1Cursor.position))
 	pass
 
 func getClosest(teamPoints, center):
