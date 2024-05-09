@@ -12,9 +12,14 @@ const CURRENCY_DROP_PREFAB = preload("res://scenes/currency_drop.tscn")
 const SUN_DROP_SPRITE = preload("res://assets/plants/sun_drop.png")
 const ZOMBIE_DROP_SPRITE = preload("res://assets/zombie/zombie_drop.png")
 
+@onready var plantsUI = %PlantsPlaceUI
+@onready var zombieUI = %ZombiePlaceUI
+
 func _ready():
 	random = RandomNumberGenerator.new()
 	random.randomize()
+	
+	updateUI()
 
 func _process(delta):
 	sinceLastDrop -= delta
@@ -28,7 +33,7 @@ func _process(delta):
 func spawnDrop(teamName, value):
 	var newDrop = CURRENCY_DROP_PREFAB.instantiate()
 	newDrop.position.x = randf_range(-150, 150)
-	newDrop.position.y = 150 + randf_range(-10, 10)
+	newDrop.position.y = -150 + randf_range(-10, 10)
 	newDrop.name = teamName + "_" + str(value)
 	newDrop.currency_manager = currency_manager
 	
@@ -48,3 +53,9 @@ func collectMoney(isTeam1, amount):
 		team1Currency += amount
 	else:
 		team2Currency += amount
+	
+	updateUI()
+	
+func updateUI():
+	plantsUI.get_node("CurrencyCount").text = str(team1Currency)
+	zombieUI.get_node("CurrencyCount").text = str(team2Currency)

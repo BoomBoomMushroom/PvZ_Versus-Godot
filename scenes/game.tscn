@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b8nnp1k3q3jlu"]
+[gd_scene load_steps=17 format=3 uid="uid://b8nnp1k3q3jlu"]
 
 [ext_resource type="PackedScene" uid="uid://cataj7p12ipe" path="res://scenes/team_cursor.tscn" id="1_6o8ip"]
 [ext_resource type="Texture2D" uid="uid://d2ityn6i7pmyi" path="res://assets/white_pixel.png" id="2_alvu4"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://ca1p7s5628y0p" path="res://assets/plants/sun_drop.png" id="10_7cucx"]
 [ext_resource type="FontFile" uid="uid://neswjwn8jlm3" path="res://assets/Fonts/PixelOperator8.ttf" id="10_8nevf"]
 [ext_resource type="PackedScene" uid="uid://c1pwp7g737tpl" path="res://scenes/place_plant_button.tscn" id="12_1a6tm"]
+[ext_resource type="Texture2D" uid="uid://ccqfx4hy1wmb8" path="res://assets/zombie/zombie_drop.png" id="13_2njqu"]
+[ext_resource type="PackedScene" uid="uid://bg4ai4c7sq1ds" path="res://scenes/currency_drop.tscn" id="14_tblc0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qgvo"]
 texture = ExtResource("2_alvu4")
@@ -50,11 +52,11 @@ sources/0 = SubResource("TileSetAtlasSource_1qgvo")
 
 [node name="Team1Cursor" parent="Cursors" instance=ExtResource("1_6o8ip")]
 unique_name_in_owner = true
-position = Vector2(-160, 0)
+position = Vector2(-155, 0)
 
 [node name="Team2Cursor" parent="Cursors" instance=ExtResource("1_6o8ip")]
 unique_name_in_owner = true
-position = Vector2(160, 0)
+position = Vector2(155, 0)
 
 [node name="GridColliders" type="Node" parent="."]
 
@@ -432,30 +434,122 @@ tile_set = SubResource("TileSet_4i7sb")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 131072, 1, 65536, 196608, 1, 131072, 131072, 1, 1, 327680, 2, 65537, 262144, 2, 131073, 327680, 2, 2, 262144, 2, 65538, 327680, 2, 131074, 262144, 2, 3, 327680, 2, 65539, 262144, 2, 131075, 327680, 2, 4, 262144, 2, 65540, 327680, 2, 131076, 262144, 2, 5, 327680, 2, 65541, 262144, 2, 131077, 327680, 2, 6, 262144, 2, 65542, 327680, 2, 131078, 262144, 2, 7, 327680, 2, 65543, 262144, 2, 131079, 327680, 2, 8, 262144, 2, 65544, 327680, 2, 131080, 262144, 2, -131081, 0, 0, -65545, 65536, 0, -9, 0, 0, 65527, 65536, 0, 131063, 0, 0, 196599, 65536, 0, -131080, 65536, 0, -65544, 0, 0, -8, 65536, 0, 65528, 0, 0, 131064, 65536, 0, 196600, 0, 0, -131079, 0, 0, -65543, 65536, 0, -7, 0, 0, 65529, 65536, 0, 131065, 0, 0, 196601, 65536, 0, -131078, 65536, 0, -65542, 0, 0, -6, 65536, 0, 65530, 0, 0, 131066, 65536, 0, 196602, 0, 0, -131077, 0, 0, -65541, 65536, 0, -5, 0, 0, 65531, 65536, 0, 131067, 0, 0, 196603, 65536, 0, -131076, 65536, 0, -65540, 0, 0, -4, 65536, 0, 65532, 0, 0, 131068, 65536, 0, 196604, 0, 0, -131075, 0, 0, -65539, 65536, 0, -3, 0, 0, 65533, 65536, 0, 131069, 0, 0, 196605, 65536, 0, -131074, 65536, 0, -65538, 0, 0, -2, 65536, 0, 65534, 0, 0, 131070, 65536, 0, 196606, 0, 0, -131073, 131072, 1, -65537, 196608, 1, -1, 131072, 1, 65535, 196608, 1, 131071, 131072, 1, 196607, 196608, 1, -196608, 196608, 1, -131072, 131072, 1, -65536, 196608, 1, -196607, 262144, 2, -131071, 327680, 2, -65535, 262144, 2, -196606, 327680, 2, -131070, 262144, 2, -65534, 327680, 2, -196605, 262144, 2, -131069, 327680, 2, -65533, 262144, 2, -196604, 327680, 2, -131068, 262144, 2, -65532, 327680, 2, -196603, 262144, 2, -131067, 327680, 2, -65531, 262144, 2, -196602, 327680, 2, -131066, 262144, 2, -65530, 327680, 2, -196601, 262144, 2, -131065, 327680, 2, -65529, 262144, 2, -196600, 327680, 2, -131064, 262144, 2, -65528, 327680, 2)
 
-[node name="Peashooter" parent="." instance=ExtResource("6_gajhh")]
-position = Vector2(-136, -40)
+[node name="Plants" type="Node" parent="."]
 
-[node name="NormalZombie" parent="." instance=ExtResource("8_n0gic")]
+[node name="Peashooter" parent="Plants" instance=ExtResource("6_gajhh")]
+position = Vector2(-136, -40)
+metadata/projectile = ExtResource("14_tblc0")
+metadata/currencyShot = true
+
+[node name="Zombies" type="Node" parent="."]
+
+[node name="NormalZombie" parent="Zombies" instance=ExtResource("8_n0gic")]
 position = Vector2(136, -48)
 metadata/speed = 16.0
 
 [node name="UI" type="Node" parent="."]
 
-[node name="Label" type="Label" parent="UI"]
-offset_left = -189.0
+[node name="PlantsPlaceUI" type="Node" parent="UI"]
+unique_name_in_owner = true
+
+[node name="CurrencyCount" type="Label" parent="UI/PlantsPlaceUI"]
+offset_left = -202.5
 offset_top = -111.0
-offset_right = -41.0
+offset_right = -54.5
 offset_bottom = -88.0
 theme_override_fonts/font = ExtResource("10_8nevf")
 theme_override_font_sizes/font_size = 16
 text = "100"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="UI"]
-position = Vector2(-200, -100)
+[node name="CurrencyIcon" type="Sprite2D" parent="UI/PlantsPlaceUI"]
+position = Vector2(-213.5, -100)
 scale = Vector2(0.23, 0.23)
 texture = ExtResource("10_7cucx")
 
-[node name="PlacePlantButton" parent="." instance=ExtResource("12_1a6tm")]
-position = Vector2(-182, -63)
+[node name="Button1" parent="UI/PlantsPlaceUI" instance=ExtResource("12_1a6tm")]
+position = Vector2(-195.5, -63)
 scale = Vector2(0.3, 0.3)
+metadata/DisplayImage = ExtResource("13_2njqu")
+
+[node name="Button2" parent="UI/PlantsPlaceUI" instance=ExtResource("12_1a6tm")]
+position = Vector2(-195.5, -31)
+scale = Vector2(0.3, 0.3)
+metadata/DisplayImage = ExtResource("13_2njqu")
+
+[node name="Button3" parent="UI/PlantsPlaceUI" instance=ExtResource("12_1a6tm")]
+position = Vector2(-195.5, 0.999999)
+scale = Vector2(0.3, 0.3)
+metadata/DisplayImage = ExtResource("13_2njqu")
+
+[node name="Button4" parent="UI/PlantsPlaceUI" instance=ExtResource("12_1a6tm")]
+position = Vector2(-195.5, 33)
+scale = Vector2(0.3, 0.3)
+metadata/DisplayImage = ExtResource("13_2njqu")
+
+[node name="Button5" parent="UI/PlantsPlaceUI" instance=ExtResource("12_1a6tm")]
+position = Vector2(-195.5, 65)
+scale = Vector2(0.3, 0.3)
+metadata/DisplayImage = ExtResource("13_2njqu")
+
+[node name="Button6" parent="UI/PlantsPlaceUI" instance=ExtResource("12_1a6tm")]
+position = Vector2(-195.5, 97)
+scale = Vector2(0.3, 0.3)
+metadata/DisplayImage = ExtResource("13_2njqu")
+
+[node name="ZombiePlaceUI" type="Node" parent="UI"]
+unique_name_in_owner = true
+
+[node name="CurrencyCount" type="Label" parent="UI/ZombiePlaceUI"]
+offset_left = 54.0
+offset_top = -111.0
+offset_right = 202.0
+offset_bottom = -88.0
+theme_override_fonts/font = ExtResource("10_8nevf")
+theme_override_font_sizes/font_size = 16
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CurrencyIcon" type="Sprite2D" parent="UI/ZombiePlaceUI"]
+position = Vector2(213.5, -100)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("13_2njqu")
+
+[node name="Button1" parent="UI/ZombiePlaceUI" instance=ExtResource("12_1a6tm")]
+position = Vector2(195.5, -63)
+scale = Vector2(0.3, 0.3)
+metadata/DisplayImage = ExtResource("13_2njqu")
+metadata/CursorToAccept = &"team2"
+
+[node name="Button2" parent="UI/ZombiePlaceUI" instance=ExtResource("12_1a6tm")]
+position = Vector2(195.5, -31)
+scale = Vector2(0.3, 0.3)
+metadata/DisplayImage = ExtResource("13_2njqu")
+metadata/CursorToAccept = &"team2"
+
+[node name="Button3" parent="UI/ZombiePlaceUI" instance=ExtResource("12_1a6tm")]
+position = Vector2(195.5, 0.999999)
+scale = Vector2(0.3, 0.3)
+metadata/DisplayImage = ExtResource("13_2njqu")
+metadata/CursorToAccept = &"team2"
+
+[node name="Button4" parent="UI/ZombiePlaceUI" instance=ExtResource("12_1a6tm")]
+position = Vector2(195.5, 33)
+scale = Vector2(0.3, 0.3)
+metadata/DisplayImage = ExtResource("13_2njqu")
+metadata/CursorToAccept = &"team2"
+
+[node name="Button5" parent="UI/ZombiePlaceUI" instance=ExtResource("12_1a6tm")]
+position = Vector2(195.5, 65)
+scale = Vector2(0.3, 0.3)
+metadata/DisplayImage = ExtResource("13_2njqu")
+metadata/CursorToAccept = &"team2"
+
+[node name="Button6" parent="UI/ZombiePlaceUI" instance=ExtResource("12_1a6tm")]
+position = Vector2(195.5, 97)
+scale = Vector2(0.3, 0.3)
+metadata/DisplayImage = ExtResource("13_2njqu")
+metadata/CursorToAccept = &"team2"

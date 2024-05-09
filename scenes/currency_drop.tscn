@@ -11,6 +11,7 @@ scale = Vector2(0.16, 0.16)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_m2xsg")
+metadata/velocity = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_v0ckd")

@@ -1,8 +1,13 @@
 res://scenes/game.tscn
+res://scripts/MiscInfo/almanac.gd
+res://scenes/place_plant_button.tscn
+res://scripts/button_hover.gd
 res://scenes/Plants/pea_projectile.tscn
 res://scenes/Plants/peashooter.tscn
 res://scenes/team_cursor.tscn
-res://scripts/MiscInfo/almanac.gd
-res://scenes/place_plant_button.tscn
-res://scripts/MiscInfo/game_info.gd
-res://scripts/button_hover.gd
+res://scripts/Plants/peashooter.gd
+res://scenes/Zombie/normal_zombie.tscn
+res://scripts/CurrencyManager.gd
+res://scenes/currency_drop.tscn
+res://scripts/CurrencyProjectile.gd
+res://scripts/currency_drop.gd

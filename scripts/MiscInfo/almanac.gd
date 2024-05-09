@@ -89,3 +89,4 @@ var plants = {
 	"Potato Mine": {"Health": 300, "AttackDamage": 1800, "AttackRecharge": 15, "SunCost": 25, "PlaceRecharge": placeRechargeTime["Slow"]},
 	"Chomper": {"Health": 300, "AttackDamage": -1, "AttackRecharge": 20, "SunCost": 150, "PlaceRecharge": placeRechargeTime["Fast"]},
 }
+

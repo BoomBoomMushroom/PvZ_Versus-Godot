@@ -12,6 +12,8 @@ size = Vector2(12, 12)
 script = ExtResource("1_xpev1")
 metadata/shootCooldown = 1.0
 metadata/projectile = ExtResource("2_6lcep")
+metadata/forceShoot = false
+metadata/currencyShot = false
 
 [node name="Shadow" parent="." instance=ExtResource("2_qsy3g")]
 position = Vector2(0, 6)
