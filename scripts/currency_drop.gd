@@ -11,13 +11,12 @@ var didReady = false
 var amount = 50
 var isTeam1 = true
 
-var artificialVelocity = Vector2.ZERO
 var maxY_vel = fallSpeed * gravity
 
 func _ready():
-	artificialVelocity = get_meta("velocity")
-	
 	var nameLower = name.to_lower()
+	
+	velocity = Vector2(randf_range(-30, 30), -30)
 	
 	if "team1" in nameLower:
 		pass
@@ -27,12 +26,12 @@ func _ready():
 		#sprite_2d.texture = ZOMBIE_DROP_SPRITE
 
 func _physics_process(delta):
-	velocity = artificialVelocity
-	
 	if velocity.y >= maxY_vel:
 		velocity.y = maxY_vel
 	else:
-		velocity.y += fallSpeed * gravity * delta
+		velocity.y += maxY_vel * 5 * delta
+
+	velocity.x -= sign(velocity.x) * 10 * delta
 
 	move_and_slide()
 

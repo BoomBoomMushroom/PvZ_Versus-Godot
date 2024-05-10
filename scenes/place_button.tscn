@@ -7,13 +7,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fbo02"]
 size = Vector2(200, 100)
 
-[node name="PlacePlantButton" type="Area2D"]
+[node name="PlaceButton" type="Area2D"]
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_bstq4")
-metadata/DisplayImage = null
 metadata/Price = 0
 metadata/CursorToAccept = &"team1"
+
+[node name="Highlighted" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(2.04, 1.06)
+texture = ExtResource("1_e3m6m")
 
 [node name="ShadowBg" type="Sprite2D" parent="."]
 modulate = Color(0.0705882, 0.0705882, 0.0705882, 0.247059)

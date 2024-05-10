@@ -14,6 +14,7 @@ metadata/shootCooldown = 1.0
 metadata/projectile = ExtResource("2_6lcep")
 metadata/forceShoot = false
 metadata/currencyShot = false
+metadata/isTeam1 = false
 
 [node name="Shadow" parent="." instance=ExtResource("2_qsy3g")]
 position = Vector2(0, 6)

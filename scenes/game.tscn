@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ncslmep1p7r2" path="res://scenes/Zombie/normal_zombie.tscn" id="8_n0gic"]
 [ext_resource type="Texture2D" uid="uid://ca1p7s5628y0p" path="res://assets/plants/sun_drop.png" id="10_7cucx"]
 [ext_resource type="FontFile" uid="uid://neswjwn8jlm3" path="res://assets/Fonts/PixelOperator8.ttf" id="10_8nevf"]
-[ext_resource type="PackedScene" uid="uid://c1pwp7g737tpl" path="res://scenes/place_plant_button.tscn" id="12_1a6tm"]
+[ext_resource type="PackedScene" uid="uid://c1pwp7g737tpl" path="res://scenes/place_button.tscn" id="12_1a6tm"]
 [ext_resource type="Texture2D" uid="uid://ccqfx4hy1wmb8" path="res://assets/zombie/zombie_drop.png" id="13_2njqu"]
 [ext_resource type="PackedScene" uid="uid://bg4ai4c7sq1ds" path="res://scenes/currency_drop.tscn" id="14_tblc0"]
 
@@ -436,16 +436,41 @@ layer_0/tile_data = PackedInt32Array(0, 131072, 1, 65536, 196608, 1, 131072, 131
 
 [node name="Plants" type="Node" parent="."]
 
-[node name="Peashooter" parent="Plants" instance=ExtResource("6_gajhh")]
-position = Vector2(-136, -40)
+[node name="DefaultSunflower1" parent="Plants" instance=ExtResource("6_gajhh")]
+position = Vector2(-136, -24)
 metadata/projectile = ExtResource("14_tblc0")
+metadata/forceShoot = true
 metadata/currencyShot = true
+metadata/isTeam1 = true
+metadata/almanacLoadName = "Sunflower"
+
+[node name="DefaultSunflower2" parent="Plants" instance=ExtResource("6_gajhh")]
+position = Vector2(-136, 24)
+metadata/projectile = ExtResource("14_tblc0")
+metadata/forceShoot = true
+metadata/currencyShot = true
+metadata/isTeam1 = true
+metadata/almanacLoadName = "Sunflower"
 
 [node name="Zombies" type="Node" parent="."]
 
 [node name="NormalZombie" parent="Zombies" instance=ExtResource("8_n0gic")]
 position = Vector2(136, -48)
 metadata/speed = 16.0
+
+[node name="DefaultGrave1" parent="Zombies" instance=ExtResource("6_gajhh")]
+position = Vector2(136, 24)
+metadata/projectile = ExtResource("14_tblc0")
+metadata/forceShoot = true
+metadata/currencyShot = true
+metadata/almanacLoadName = "Sunflower"
+
+[node name="DefaultGrave2" parent="Zombies" instance=ExtResource("6_gajhh")]
+position = Vector2(136, -24)
+metadata/projectile = ExtResource("14_tblc0")
+metadata/forceShoot = true
+metadata/currencyShot = true
+metadata/almanacLoadName = "Sunflower"
 
 [node name="UI" type="Node" parent="."]
 
@@ -521,35 +546,35 @@ texture = ExtResource("13_2njqu")
 [node name="Button1" parent="UI/ZombiePlaceUI" instance=ExtResource("12_1a6tm")]
 position = Vector2(195.5, -63)
 scale = Vector2(0.3, 0.3)
-metadata/DisplayImage = ExtResource("13_2njqu")
 metadata/CursorToAccept = &"team2"
+metadata/DisplayImage = ExtResource("13_2njqu")
 
 [node name="Button2" parent="UI/ZombiePlaceUI" instance=ExtResource("12_1a6tm")]
 position = Vector2(195.5, -31)
 scale = Vector2(0.3, 0.3)
-metadata/DisplayImage = ExtResource("13_2njqu")
 metadata/CursorToAccept = &"team2"
+metadata/DisplayImage = ExtResource("13_2njqu")
 
 [node name="Button3" parent="UI/ZombiePlaceUI" instance=ExtResource("12_1a6tm")]
 position = Vector2(195.5, 0.999999)
 scale = Vector2(0.3, 0.3)
-metadata/DisplayImage = ExtResource("13_2njqu")
 metadata/CursorToAccept = &"team2"
+metadata/DisplayImage = ExtResource("13_2njqu")
 
 [node name="Button4" parent="UI/ZombiePlaceUI" instance=ExtResource("12_1a6tm")]
 position = Vector2(195.5, 33)
 scale = Vector2(0.3, 0.3)
-metadata/DisplayImage = ExtResource("13_2njqu")
 metadata/CursorToAccept = &"team2"
+metadata/DisplayImage = ExtResource("13_2njqu")
 
 [node name="Button5" parent="UI/ZombiePlaceUI" instance=ExtResource("12_1a6tm")]
 position = Vector2(195.5, 65)
 scale = Vector2(0.3, 0.3)
-metadata/DisplayImage = ExtResource("13_2njqu")
 metadata/CursorToAccept = &"team2"
+metadata/DisplayImage = ExtResource("13_2njqu")
 
 [node name="Button6" parent="UI/ZombiePlaceUI" instance=ExtResource("12_1a6tm")]
 position = Vector2(195.5, 97)
 scale = Vector2(0.3, 0.3)
-metadata/DisplayImage = ExtResource("13_2njqu")
 metadata/CursorToAccept = &"team2"
+metadata/DisplayImage = ExtResource("13_2njqu")

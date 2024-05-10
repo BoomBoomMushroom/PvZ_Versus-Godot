@@ -27,8 +27,8 @@ func _process(delta):
 	if sinceLastDrop < 0:
 		sinceLastDrop = randf_range(10, 50)
 		
-		spawnDrop("Team1", 50)
-		spawnDrop("Team2", 50)
+		add_child(spawnDrop("Team1", 50))
+		add_child(spawnDrop("Team2", 50))
 
 func spawnDrop(teamName, value):
 	var newDrop = CURRENCY_DROP_PREFAB.instantiate()
@@ -44,7 +44,7 @@ func spawnDrop(teamName, value):
 	if teamName.to_lower() == "team2": newTexture = ZOMBIE_DROP_SPRITE
 	
 	newDrop.get_node("Sprite2D").texture = newTexture
-	add_child(newDrop)
+	return newDrop
 
 
 func collectMoney(isTeam1, amount):
