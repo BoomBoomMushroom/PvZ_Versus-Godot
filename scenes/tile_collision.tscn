@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://kwhnbnqv6yf8"]
+[gd_scene load_steps=4 format=3 uid="uid://kwhnbnqv6yf8"]
 
 [ext_resource type="Script" path="res://scripts/tile_collision.gd" id="1_g4spm"]
+[ext_resource type="Texture2D" uid="uid://d2ityn6i7pmyi" path="res://assets/white_pixel.png" id="2_jtxn2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxsc4"]
 
@@ -12,6 +13,11 @@ script = ExtResource("1_g4spm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bxsc4")
+
+[node name="Highlight" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_jtxn2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

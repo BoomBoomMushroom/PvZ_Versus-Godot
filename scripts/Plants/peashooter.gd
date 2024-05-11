@@ -8,7 +8,7 @@ extends Area2D
 var shootCooldown = -1
 var health = 100
 var attackDamage = 10
-
+var attackDistance = -1
 
 var sinceLastShot = 0
 var projectile = null
@@ -30,7 +30,9 @@ func _ready():
 		health = plantData["Health"]
 		attackDamage = plantData["AttackDamage"]
 		shootCooldown = plantData["AttackRecharge"]
-			
+		forceShoot = plantData["ForceShoot"]
+		attackDistance = plantData["AttackDistance"]
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -41,12 +43,16 @@ func _process(delta):
 	# If colliding shoot.
 	# it should always collide with a zombie because of the collison mask
 	if (forceShoot || projectileRaycastAndExit.is_colliding()) && sinceLastShot <= 0:
-			shootProjectile()
-			sinceLastShot = shootCooldown
+			var dist = -1
+			if forceShoot == false:
+				var colliding = projectileRaycastAndExit.get_collider()
+				dist = sqrt( pow(position.x-colliding.x, 2) + pow(position.y-colliding.y, 2) )
+		
+			if attackDistance == -1 || dist <= attackDistance:
+				shootProjectile()
+				sinceLastShot = shootCooldown
 
 func shootProjectile():
-	
-	
 	if currencyShot:
 		var teamName = "Team1"
 		if team1Currency == false: teamName = "Team2"

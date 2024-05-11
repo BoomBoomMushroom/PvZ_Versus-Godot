@@ -2,23 +2,6 @@ extends Node
 
 # From https://plantsvszombies.fandom.com/wiki/Zombies_(PvZ2)
 
-"""
-const toughnessRates = {
-	"Fragile" - Absorbs 1-100 damage.
-	"Average" - Absorbs 101-200 damage.
-	"Solid" - Absorbs 201-320 damage.
-	"Protected" - Absorbs 321-600 damage.
-	"Dense" - Absorbs 601-1000 damage.
-	"Hardened" - Absorbs 1001-1700 damage.
-	"Machined" - Absorbs 1701-2500 damage.
-	"Great" - Absorbs 2501-8000 damage.
-	"Undying": "8001-29500",
-	"Ultra-Undying": "29501-30000"
-}
-"""
-
-
-
 # 32 speed = 0.5 seconds/tile
 # 16 speed = 1 second/tile
 # 8 => 2 seconds/tile
@@ -82,11 +65,28 @@ var placeRechargeTime = { # in seconds
 }
 
 var plants = {
-	"Peashooter": {"Health": 300, "AttackDamage": 20, "AttackRecharge": 1.425, "SunCost": 100, "PlaceRecharge": placeRechargeTime["Fast"]},
-	"Sunflower": {"Health": 300, "AttackDamage": 0, "AttackRecharge": 24.25, "SunCost": 50, "PlaceRecharge": placeRechargeTime["Fast"]},
-	"Cherry Bomb": {"Health": -1, "AttackDamage": 1800, "AttackRecharge": 1.2, "SunCost": 150, "PlaceRecharge": placeRechargeTime["Very Slow"]},
-	"Wall-nut": {"Health": 4000, "AttackDamage": 0, "AttackRecharge": 0, "SunCost": 50, "PlaceRecharge": placeRechargeTime["Slow"]},
-	"Potato Mine": {"Health": 300, "AttackDamage": 1800, "AttackRecharge": 15, "SunCost": 25, "PlaceRecharge": placeRechargeTime["Slow"]},
-	"Chomper": {"Health": 300, "AttackDamage": -1, "AttackRecharge": 20, "SunCost": 150, "PlaceRecharge": placeRechargeTime["Fast"]},
+	"Peashooter": {"Health": 300, "AttackDamage": 20, "AttackRecharge": 1.425, "SunCost": 100,
+		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "PEA", "ForceShoot": false,
+		"AttackDistance": -1},
+	
+	"Sunflower": {"Health": 300, "AttackDamage": 0, "AttackRecharge": 24.25, "SunCost": 50,
+		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "CURRENCY", "ForceShoot": true,
+		"AttackDistance": -1},
+	
+	"Cherry Bomb": {"Health": -1, "AttackDamage": 1800, "AttackRecharge": 1.2, "SunCost": 150,
+		"PlaceRecharge": placeRechargeTime["Very Slow"], "Projectile": "NONE", "ForceShoot": true,
+		"AttackDistance": -1},
+	
+	"Wall-nut": {"Health": 4000, "AttackDamage": 0, "AttackRecharge": 0, "SunCost": 50,
+		"PlaceRecharge": placeRechargeTime["Slow"], "Projectile": "NONE", "ForceShoot": false,
+		"AttackDistance": -1},
+	
+	"Potato Mine": {"Health": 300, "AttackDamage": 1800, "AttackRecharge": 15, "SunCost": 25,
+		"PlaceRecharge": placeRechargeTime["Slow"], "Projectile": "NONE", "ForceShoot": false,
+		"AttackDistance": 8},
+	
+	"Chomper": {"Health": 300, "AttackDamage": -1, "AttackRecharge": 20, "SunCost": 150,
+		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "NONE", "ForceShoot": false,
+		"AttackDistance": 24},
 }
 
