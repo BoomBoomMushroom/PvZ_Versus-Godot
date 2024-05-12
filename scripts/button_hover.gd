@@ -11,11 +11,11 @@ var teamNameLook = ""
 var isEntered = false
 
 func _ready():
-	image.texture = get_meta("DisplayImage")
-	price.text = str(get_meta("Price"))
 	teamNameLook = get_meta("CursorToAccept")
 
 func _process(delta):
+	if visible == false: return
+	
 	var actionName = "team1_click"
 	if teamNameLook == "team2": actionName = "team2_click"
 	

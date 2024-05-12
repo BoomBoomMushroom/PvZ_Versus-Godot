@@ -49,10 +49,14 @@ const toughnessRates = {
 }
 
 const zombies = {
-	"Basic Zombie": {"Toughness": toughnessRates["Average"], "Health": 190, "Speed": speeds["Basic"], "Damage": 100},
-	"Conehead Zombie": {"Toughness": toughnessRates["Protected"], "Health": 190+370, "Speed": speeds["Basic"], "Damage": 100},
-	"Buckethead Zombie": {"Toughness": toughnessRates["Hardened"], "Health": 190+1100, "Speed": speeds["Basic"], "Damage": 100},
-	"Flag Zombie": {"Toughness": toughnessRates["Average"], "Health": 190, "Speed": speeds["Basic"], "Damage": 100},
+	"Basic Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
+		"Speed": speeds["Basic"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
+	"Conehead Zombie": {"Toughness": toughnessRates["Protected"], "Health": 190+370,
+		"Speed": speeds["Basic"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
+	"Buckethead Zombie": {"Toughness": toughnessRates["Hardened"], "Health": 190+1100,
+		"Speed": speeds["Basic"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
+	"Flag Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
+		"Speed": speeds["Basic"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
 }
 
 
@@ -65,28 +69,28 @@ var placeRechargeTime = { # in seconds
 }
 
 var plants = {
-	"Peashooter": {"Health": 300, "AttackDamage": 20, "AttackRecharge": 1.425, "SunCost": 100,
+	"Peashooter": {"Health": 300, "AttackDamage": 20, "AttackRecharge": 1.425, "Cost": 100,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "PEA", "ForceShoot": false,
-		"AttackDistance": -1},
+		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png"},
 	
-	"Sunflower": {"Health": 300, "AttackDamage": 0, "AttackRecharge": 24.25, "SunCost": 50,
+	"Sunflower": {"Health": 300, "AttackDamage": 0, "AttackRecharge": 24.25, "Cost": 50,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "CURRENCY", "ForceShoot": true,
-		"AttackDistance": -1},
+		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png"},
 	
-	"Cherry Bomb": {"Health": -1, "AttackDamage": 1800, "AttackRecharge": 1.2, "SunCost": 150,
+	"Cherry Bomb": {"Health": -1, "AttackDamage": 1800, "AttackRecharge": 1.2, "Cost": 150,
 		"PlaceRecharge": placeRechargeTime["Very Slow"], "Projectile": "NONE", "ForceShoot": true,
-		"AttackDistance": -1},
+		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png"},
 	
-	"Wall-nut": {"Health": 4000, "AttackDamage": 0, "AttackRecharge": 0, "SunCost": 50,
+	"Wall-nut": {"Health": 4000, "AttackDamage": 0, "AttackRecharge": 0, "Cost": 50,
 		"PlaceRecharge": placeRechargeTime["Slow"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": -1},
+		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png"},
 	
-	"Potato Mine": {"Health": 300, "AttackDamage": 1800, "AttackRecharge": 15, "SunCost": 25,
+	"Potato Mine": {"Health": 300, "AttackDamage": 1800, "AttackRecharge": 15, "Cost": 25,
 		"PlaceRecharge": placeRechargeTime["Slow"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": 8},
+		"AttackDistance": 8, "ImagePath": "res://assets/white_pixel.png"},
 	
-	"Chomper": {"Health": 300, "AttackDamage": -1, "AttackRecharge": 20, "SunCost": 150,
+	"Chomper": {"Health": 300, "AttackDamage": -1, "AttackRecharge": 20, "Cost": 150,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": 24},
+		"AttackDistance": 24, "ImagePath": "res://assets/white_pixel.png"},
 }
 

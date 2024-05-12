@@ -18,6 +18,9 @@ func _ready():
 	top_left = get_meta("topLeft")
 
 func cursorClickTile(x, y, isTeam1):
+	if isTeam1 && team1ButtonSelected == null: return
+	if isTeam1==false && team2ButtonSelected == null: return
+	
 	print(str(x) + ", " + str(y) + " - team1=" + str(isTeam1))
 	pass
 
