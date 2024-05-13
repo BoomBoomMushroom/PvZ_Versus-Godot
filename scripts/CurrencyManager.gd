@@ -1,7 +1,7 @@
 extends Node
 
-var team1Currency = 0
-var team2Currency = 0
+var team2Currency = 75
+var team1Currency = 75
 
 var sinceLastDrop = 0
 var random
@@ -29,6 +29,13 @@ func _process(delta):
 		
 		add_child(spawnDrop("Team1", 50))
 		add_child(spawnDrop("Team2", 50))
+
+func spendMoney(amount, isTeam1):
+	if isTeam1:
+		team1Currency -= amount
+	else:
+		team2Currency -= amount
+	updateUI()
 
 func spawnDrop(teamName, value):
 	var newDrop = CURRENCY_DROP_PREFAB.instantiate()

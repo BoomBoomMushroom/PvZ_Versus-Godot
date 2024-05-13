@@ -405,11 +405,11 @@ position = Vector2(248, 0)
 rotation = -1.5708
 
 [node name="Top" parent="ProjectileKillBorder" instance=ExtResource("7_36u52")]
-position = Vector2(0, -140)
+position = Vector2(0, -160)
 rotation = 3.14159
 
 [node name="Bottom" parent="ProjectileKillBorder" instance=ExtResource("7_36u52")]
-position = Vector2(0, 140)
+position = Vector2(0, 160)
 
 [node name="Left" parent="ProjectileKillBorder" instance=ExtResource("7_36u52")]
 position = Vector2(-248, 0)
@@ -450,6 +450,7 @@ metadata/projectile = ExtResource("14_tblc0")
 metadata/forceShoot = true
 metadata/currencyShot = true
 metadata/isTeam1 = true
+metadata/readMetadata = true
 metadata/almanacLoadName = "Sunflower"
 
 [node name="DefaultSunflower2" parent="Plants" instance=ExtResource("6_gajhh")]
@@ -458,19 +459,17 @@ metadata/projectile = ExtResource("14_tblc0")
 metadata/forceShoot = true
 metadata/currencyShot = true
 metadata/isTeam1 = true
+metadata/readMetadata = true
 metadata/almanacLoadName = "Sunflower"
 
 [node name="Zombies" type="Node" parent="."]
-
-[node name="NormalZombie" parent="Zombies" instance=ExtResource("8_n0gic")]
-position = Vector2(136, -48)
-metadata/speed = 16.0
 
 [node name="DefaultGrave1" parent="Zombies" instance=ExtResource("6_gajhh")]
 position = Vector2(136, 24)
 metadata/projectile = ExtResource("14_tblc0")
 metadata/forceShoot = true
 metadata/currencyShot = true
+metadata/readMetadata = true
 metadata/almanacLoadName = "Sunflower"
 
 [node name="DefaultGrave2" parent="Zombies" instance=ExtResource("6_gajhh")]
@@ -478,7 +477,38 @@ position = Vector2(136, -24)
 metadata/projectile = ExtResource("14_tblc0")
 metadata/forceShoot = true
 metadata/currencyShot = true
+metadata/readMetadata = true
 metadata/almanacLoadName = "Sunflower"
+
+[node name="TargetZombie1" parent="Zombies" instance=ExtResource("8_n0gic")]
+z_index = 1
+position = Vector2(152, -48)
+metadata/zombieLoad = &"Target Zombie"
+
+[node name="TargetZombie2" parent="Zombies" instance=ExtResource("8_n0gic")]
+z_index = 2
+position = Vector2(152, -32)
+metadata/zombieLoad = &"Target Zombie"
+
+[node name="TargetZombie3" parent="Zombies" instance=ExtResource("8_n0gic")]
+z_index = 3
+position = Vector2(152, -16)
+metadata/zombieLoad = &"Target Zombie"
+
+[node name="TargetZombie4" parent="Zombies" instance=ExtResource("8_n0gic")]
+z_index = 4
+position = Vector2(152, 0)
+metadata/zombieLoad = &"Target Zombie"
+
+[node name="TargetZombie5" parent="Zombies" instance=ExtResource("8_n0gic")]
+z_index = 5
+position = Vector2(152, 16)
+metadata/zombieLoad = &"Target Zombie"
+
+[node name="TargetZombie6" parent="Zombies" instance=ExtResource("8_n0gic")]
+z_index = 6
+position = Vector2(152, 32)
+metadata/zombieLoad = &"Target Zombie"
 
 [node name="UI" type="Node" parent="."]
 

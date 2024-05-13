@@ -27,6 +27,7 @@ const speeds = {
 """
 
 const speeds = {
+	"NoAI": 0,
 	"Creeper": 2.133,
 	"Stiff": 2.37,
 	"Basic": 3.2,
@@ -36,6 +37,7 @@ const speeds = {
 }
 
 const toughnessRates = {
+	"None": Vector2(0, 0),
 	"Fragile": Vector2(1, 100),
 	"Average": Vector2(101, 200),
 	"Solid": Vector2(201, 320),
@@ -49,6 +51,8 @@ const toughnessRates = {
 }
 
 const zombies = {
+	"Target Zombie": {"Toughness": toughnessRates["None"], "Health": 1,
+		"Speed": speeds["NoAI"], "Damage": 0, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
 	"Basic Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
 		"Speed": speeds["Basic"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
 	"Conehead Zombie": {"Toughness": toughnessRates["Protected"], "Health": 190+370,
@@ -56,41 +60,46 @@ const zombies = {
 	"Buckethead Zombie": {"Toughness": toughnessRates["Hardened"], "Health": 190+1100,
 		"Speed": speeds["Basic"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
 	"Flag Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
-		"Speed": speeds["Basic"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
+		"Speed": speeds["Flighty"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
+}
+
+const zombieEquipment = {
+	"Cone": {"Health": 370, "PrefabPath": ""},
+	"Bucket": {"Health": 1100, "PrefabPath": ""},
 }
 
 
 # Plants | From https://plantsvszombies.fandom.com/wiki/Plants_(PvZ)
 
-var placeRechargeTime = { # in seconds
+const placeRechargeTime = { # in seconds
 	"Fast": 7.5,
 	"Slow": 30,
 	"Very Slow": 50,
 }
 
-var plants = {
+const plants = {
 	"Peashooter": {"Health": 300, "AttackDamage": 20, "AttackRecharge": 1.425, "Cost": 100,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "PEA", "ForceShoot": false,
-		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png"},
+		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png", "ShootOnSpawn": true},
 	
 	"Sunflower": {"Health": 300, "AttackDamage": 0, "AttackRecharge": 24.25, "Cost": 50,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "CURRENCY", "ForceShoot": true,
-		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png"},
+		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png", "ShootOnSpawn": true},
 	
 	"Cherry Bomb": {"Health": -1, "AttackDamage": 1800, "AttackRecharge": 1.2, "Cost": 150,
 		"PlaceRecharge": placeRechargeTime["Very Slow"], "Projectile": "NONE", "ForceShoot": true,
-		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png"},
+		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png", "ShootOnSpawn": false},
 	
 	"Wall-nut": {"Health": 4000, "AttackDamage": 0, "AttackRecharge": 0, "Cost": 50,
 		"PlaceRecharge": placeRechargeTime["Slow"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png"},
+		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png", "ShootOnSpawn": true},
 	
 	"Potato Mine": {"Health": 300, "AttackDamage": 1800, "AttackRecharge": 15, "Cost": 25,
 		"PlaceRecharge": placeRechargeTime["Slow"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": 8, "ImagePath": "res://assets/white_pixel.png"},
+		"AttackDistance": 8, "ImagePath": "res://assets/white_pixel.png", "ShootOnSpawn": false},
 	
 	"Chomper": {"Health": 300, "AttackDamage": -1, "AttackRecharge": 20, "Cost": 150,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": 24, "ImagePath": "res://assets/white_pixel.png"},
+		"AttackDistance": 24, "ImagePath": "res://assets/white_pixel.png", "ShootOnSpawn": true},
 }
 

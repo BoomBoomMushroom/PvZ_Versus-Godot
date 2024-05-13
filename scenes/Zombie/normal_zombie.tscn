@@ -14,6 +14,8 @@ script = ExtResource("1_3i82i")
 metadata/speed = 7.0
 metadata/directionMult = -1.0
 metadata/health = 100.0
+metadata/zombieLoad = &"Basic Zombie"
+metadata/loadFromName = true
 
 [node name="Shadow" parent="." instance=ExtResource("1_yga5l")]
 position = Vector2(0, 14)

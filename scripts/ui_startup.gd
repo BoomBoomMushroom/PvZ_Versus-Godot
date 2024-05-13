@@ -10,11 +10,11 @@ var team1Choices = [
 ]
 
 var team2Choices = [
+	"Sunflower",
 	"Basic Zombie",
 	"Conehead Zombie",
 	"Buckethead Zombie",
 	"Flag Zombie",
-	"",
 	"",
 ]
 
@@ -34,6 +34,7 @@ func _ready():
 			var t1Choice = almanac.plants[team1ChoiceName]
 			plantButton.get_node("Image").texture = load(t1Choice["ImagePath"])
 			plantButton.get_node("Price").text = str(t1Choice["Cost"])
+			plantButton.set_meta("itemName", team1ChoiceName)
 		else:
 			plantButton.visible = false
 		
@@ -41,5 +42,11 @@ func _ready():
 			var t2Choice = almanac.zombies[team2ChoiceName]
 			zombieButton.get_node("Image").texture = load(t2Choice["ImagePath"])
 			zombieButton.get_node("Price").text = str(t2Choice["Cost"])
+			zombieButton.set_meta("itemName", team2ChoiceName)
+		elif team2ChoiceName == "Sunflower":
+			var t2Choice = almanac.plants[team2ChoiceName]
+			zombieButton.get_node("Image").texture = load(t2Choice["ImagePath"])
+			zombieButton.get_node("Price").text = str(t2Choice["Cost"])
+			zombieButton.set_meta("itemName", team2ChoiceName)
 		else:
 			zombieButton.visible = false

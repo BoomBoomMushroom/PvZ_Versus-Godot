@@ -13,6 +13,7 @@ collision_mask = 32
 script = ExtResource("1_bstq4")
 metadata/Price = 0
 metadata/CursorToAccept = &"team1"
+metadata/itemName = &""
 
 [node name="Highlighted" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -35,7 +36,8 @@ offset_right = 96.0
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("2_8idbj")
 theme_override_font_sizes/font_size = 32
-text = "100"
+text = "0
+"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fbo02")

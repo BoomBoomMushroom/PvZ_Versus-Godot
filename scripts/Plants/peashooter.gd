@@ -1,8 +1,12 @@
 extends Area2D
 
-@onready var projectileRaycastAndExit = $ProjectileExitHere
-@onready var currency_manager = %CurrencyManager
-@onready var almanac = %Almanac
+#@onready var projectileRaycastAndExit = $ProjectileExitHere
+#@onready var currency_manager = %CurrencyManager
+#@onready var almanac = %Almanac
+
+var projectileRaycastAndExit
+var currency_manager
+var almanac
 
 # Stats ig
 var shootCooldown = -1
@@ -18,11 +22,17 @@ var currencyShot = false
 var team1Currency = false
 
 func _ready():
-	shootCooldown = get_meta("shootCooldown")
-	projectile = get_meta("projectile")
-	forceShoot = get_meta("forceShoot")
-	currencyShot = get_meta("currencyShot")
-	team1Currency = get_meta("isTeam1")
+	projectileRaycastAndExit = get_node("ProjectileExitHere")	
+	currency_manager = get_node("/root/Game/Managers/CurrencyManager")
+	almanac = get_node("/root/Almanac")
+	
+	
+	if get_meta("readMetadata"):
+		shootCooldown = get_meta("shootCooldown")
+		projectile = get_meta("projectile")
+		forceShoot = get_meta("forceShoot")
+		currencyShot = get_meta("currencyShot")
+		team1Currency = get_meta("isTeam1")
 	
 	var almanacLoadName = get_meta("almanacLoadName")
 	if almanacLoadName != "":
@@ -32,7 +42,8 @@ func _ready():
 		shootCooldown = plantData["AttackRecharge"]
 		forceShoot = plantData["ForceShoot"]
 		attackDistance = plantData["AttackDistance"]
-		
+		if plantData["ShootOnSpawn"] == false:
+			sinceLastShot = shootCooldown
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -45,7 +56,7 @@ func _process(delta):
 	if (forceShoot || projectileRaycastAndExit.is_colliding()) && sinceLastShot <= 0:
 			var dist = -1
 			if forceShoot == false:
-				var colliding = projectileRaycastAndExit.get_collider()
+				var colliding = projectileRaycastAndExit.get_collider().position
 				dist = sqrt( pow(position.x-colliding.x, 2) + pow(position.y-colliding.y, 2) )
 		
 			if attackDistance == -1 || dist <= attackDistance:
@@ -62,6 +73,6 @@ func shootProjectile():
 	else:
 		var newProjectile = projectile.instantiate()
 		newProjectile.position = projectileRaycastAndExit.position
-		newProjectile.set_meta("damage", 10)
+		newProjectile.set_meta("damage", attackDamage)
 		add_child(newProjectile)
 	

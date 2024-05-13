@@ -1,6 +1,8 @@
 extends Node
 
 @onready var almanac = %Almanac
+@onready var ui_startup = %UI_Startup
+@onready var currency_manager = %CurrencyManager
 @onready var plants_place_ui = %PlantsPlaceUI
 @onready var zombie_place_ui = %ZombiePlaceUI
 
@@ -8,11 +10,14 @@ const PEA_PROJECTILE = preload("res://scenes/Plants/pea_projectile.tscn")
 const CURRENCY_PROJECTILE = preload("res://scenes/currency_drop.tscn")
 
 const PLANT_PREFAB = preload("res://scenes/Plants/peashooter.tscn")
+const ZOMBIE_PREFAB = preload("res://scenes/Zombie/normal_zombie.tscn")
 
 var top_left = Vector2.ZERO
 
 var team1ButtonSelected = null
 var team2ButtonSelected = null
+
+var placements = ["1,2", "1,5", "18,2", "18,5"]
 
 func _ready():
 	top_left = get_meta("topLeft")
@@ -21,8 +26,70 @@ func cursorClickTile(x, y, isTeam1):
 	if isTeam1 && team1ButtonSelected == null: return
 	if isTeam1==false && team2ButtonSelected == null: return
 	
-	print(str(x) + ", " + str(y) + " - team1=" + str(isTeam1))
-	pass
+	var team2Sunflower = isTeam1==false && team2ButtonSelected.get_meta("itemName") == "Sunflower"
+	var isPlacingZombie = team2Sunflower == false and isTeam1==false
+	var cordString = str(x) + "," + str(y)
+	if cordString in placements and isPlacingZombie == false: return
+	
+	
+	if isTeam1:
+		var plantToPlace = team1ButtonSelected.get_meta("itemName")
+		var plantData = almanac.plants[plantToPlace]
+		if currency_manager.team1Currency >= plantData["Cost"]:
+			currency_manager.spendMoney(plantData["Cost"], isTeam1)
+		else:
+			return
+		
+		var newPlant = PLANT_PREFAB.instantiate()
+		newPlant.set_meta("almanacLoadName", plantToPlace)
+		newPlant.position = top_left + Vector2( (x-1) * 16, y * 16 - 8 )
+		
+		var projectile = null
+		if plantData["Projectile"] == "PEA":
+			projectile = PEA_PROJECTILE
+			newPlant.currencyShot = false
+		elif plantData["Projectile"] == "CURRENCY":
+			projectile = CURRENCY_PROJECTILE
+			newPlant.currencyShot = true
+		
+		newPlant.projectile = projectile
+		newPlant.team1Currency = isTeam1
+		
+		placements.append(cordString)
+		add_child(newPlant)
+	elif team2Sunflower:
+		var zombieToPlace = team2ButtonSelected.get_meta("itemName")
+		var zombieData = almanac.plants[zombieToPlace]
+		if currency_manager.team2Currency >= zombieData["Cost"]:
+			currency_manager.spendMoney(zombieData["Cost"], isTeam1)
+		else:
+			return
+		
+		var newZombiePlant = PLANT_PREFAB.instantiate()
+		newZombiePlant.set_meta("almanacLoadName", zombieToPlace)
+		newZombiePlant.position = top_left + Vector2( (x-1) * 16, y * 16 - 8 )
+
+		newZombiePlant.projectile = CURRENCY_PROJECTILE
+		newZombiePlant.currencyShot = true
+		newZombiePlant.team1Currency = isTeam1
+		
+		placements.append(cordString)
+		add_child(newZombiePlant)
+	else:
+		var zombieToPlace = team2ButtonSelected.get_meta("itemName")
+		var zombieData = almanac.zombies[zombieToPlace]
+		if currency_manager.team2Currency >= zombieData["Cost"]:
+			currency_manager.spendMoney(zombieData["Cost"], isTeam1)
+		else:
+			return
+		
+		var newZombie = ZOMBIE_PREFAB.instantiate()
+		newZombie.set_meta("zombieLoad", zombieToPlace)
+		newZombie.position = top_left + Vector2( (x-1) * 16, y * 16 - 16 )
+		
+		add_child(newZombie)
+	
+	#print(str(x) + ", " + str(y) + " - team1=" + str(isTeam1))
 
 func selectButton(buttonNode, isTeam1):
 	var prevButton = team1ButtonSelected
