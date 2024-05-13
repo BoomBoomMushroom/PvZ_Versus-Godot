@@ -9,8 +9,8 @@
 size = Vector2(12, 12)
 
 [node name="Peashooter" type="Area2D"]
-collision_layer = 17
-collision_mask = 17
+collision_layer = 145
+collision_mask = 145
 script = ExtResource("1_xpev1")
 metadata/shootCooldown = 1.0
 metadata/projectile = ExtResource("2_6lcep")
