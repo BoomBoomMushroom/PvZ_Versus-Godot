@@ -41,6 +41,7 @@ func _physics_process(delta):
 func _on_hit_collide_body_entered(body):
 	print(body.name)
 	
+	if body.get_meta("isTeam1") == false: return
 	var damage = body.get_meta("damage")
 	
 	if toughness > 0:

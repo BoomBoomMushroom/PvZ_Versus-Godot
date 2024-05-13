@@ -6,6 +6,7 @@ extends Area2D
 
 var projectileRaycastAndExit
 var currency_manager
+var placement_manager
 var almanac
 
 # Stats ig
@@ -24,6 +25,7 @@ var team1Currency = false
 func _ready():
 	projectileRaycastAndExit = get_node("ProjectileExitHere")	
 	currency_manager = get_node("/root/Game/Managers/CurrencyManager")
+	placement_manager = get_node("/root/Game/Managers/PlacementManager")
 	almanac = get_node("/root/Almanac")
 	
 	
@@ -47,6 +49,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if health <= 0:
+		placement_manager.removePlacementAtCords(position)
+		queue_free()
 	if shootCooldown == -1 or projectile == null: return
 
 	sinceLastShot -= delta
@@ -74,5 +79,15 @@ func shootProjectile():
 		var newProjectile = projectile.instantiate()
 		newProjectile.position = projectileRaycastAndExit.position
 		newProjectile.set_meta("damage", attackDamage)
+		newProjectile.set_meta("isTeam1", team1Currency)
 		add_child(newProjectile)
 	
+
+
+
+func _on_body_entered(body):
+	if body.get_meta("isTeam1") == team1Currency: return
+	
+	health -= body.get_meta("damage")
+	body.queue_free()
+	print(health)

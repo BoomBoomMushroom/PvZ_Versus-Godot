@@ -22,6 +22,19 @@ var placements = ["1,2", "1,5", "18,2", "18,5"]
 func _ready():
 	top_left = get_meta("topLeft")
 
+func posToCords(pos):
+	var newPos = pos - top_left
+	newPos.y += 8
+	newPos /= Vector2(16, 16)
+	newPos.x += 1
+	
+	return str(newPos.x) + "," + str(newPos.y)
+
+func removePlacementAtCords(position):
+	var cords = posToCords(position)
+	var index = placements.find(cords)
+	placements.remove_at(index)
+
 func cursorClickTile(x, y, isTeam1):
 	if isTeam1 && team1ButtonSelected == null: return
 	if isTeam1==false && team2ButtonSelected == null: return
