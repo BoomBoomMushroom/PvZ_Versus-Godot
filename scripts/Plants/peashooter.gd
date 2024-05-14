@@ -22,6 +22,8 @@ var forceShoot = false
 var currencyShot = false
 var team1Currency = false
 
+var gettingEatenByZombies = []
+
 func _ready():
 	projectileRaycastAndExit = get_node("ProjectileExitHere")	
 	currency_manager = get_node("/root/Game/Managers/CurrencyManager")
@@ -50,23 +52,48 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if health <= 0:
+		for activeEater in gettingEatenByZombies:
+			if activeEater != null: activeEater.releasedFromEatingDuties()
+		gettingEatenByZombies = []
 		placement_manager.removePlacementAtCords(position)
 		queue_free()
 	if shootCooldown == -1 or projectile == null: return
 
 	sinceLastShot -= delta
 	
+	var projectileRaycastColliding = projectileRaycastAndExit.is_colliding()
+	
+	for zombie in placement_manager.placedZombies:
+		var zombiePos = zombie.position
+		var dist = sqrt( pow(position.x-zombiePos.x, 2) + pow(position.y-zombiePos.y, 2) )
+		if dist <= 15:
+			if team1Currency:
+				gettingEatenByZombies.append(zombie)
+				zombie.youAreNowEatingOpposingTeam(get_node("."))
+	
+	"""
+	if projectileRaycastColliding:
+		var colliding = projectileRaycastAndExit.get_collider()
+		var collidingPos = colliding.position
+		var dist = sqrt( pow(position.x-collidingPos.x, 2) + pow(position.y-collidingPos.y, 2) )
+		if dist <= 15:
+			if team1Currency:
+				gettingEatenByZombies.append(colliding)
+				colliding.youAreNowEatingOpposingTeam(get_node("."))
+	"""
+	
 	# If colliding shoot.
 	# it should always collide with a zombie because of the collison mask
-	if (forceShoot || projectileRaycastAndExit.is_colliding()) && sinceLastShot <= 0:
-			var dist = -1
-			if forceShoot == false:
-				var colliding = projectileRaycastAndExit.get_collider().position
-				dist = sqrt( pow(position.x-colliding.x, 2) + pow(position.y-colliding.y, 2) )
+	if (forceShoot || projectileRaycastColliding) && sinceLastShot <= 0:
+		var dist = -1
+		if forceShoot == false:
+			var colliding = projectileRaycastAndExit.get_collider().position
+			dist = sqrt( pow(position.x-colliding.x, 2) + pow(position.y-colliding.y, 2) )
 		
-			if attackDistance == -1 || dist <= attackDistance:
-				shootProjectile()
-				sinceLastShot = shootCooldown
+		if attackDistance == -1 || dist <= attackDistance:
+			shootProjectile()
+			sinceLastShot = shootCooldown
+
 
 func shootProjectile():
 	if currencyShot:
@@ -83,9 +110,11 @@ func shootProjectile():
 		add_child(newProjectile)
 	
 
+func takeDamage(damage):
+	health -= damage
+
 func _on_body_entered(body):
 	if body.get_meta("isTeam1") == team1Currency: return
-	
-	health -= body.get_meta("damage")
+		
+	takeDamage(body.get_meta("damage"))
 	body.queue_free()
-	print(health)

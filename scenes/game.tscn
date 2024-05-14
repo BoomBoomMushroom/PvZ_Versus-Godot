@@ -405,7 +405,7 @@ position = Vector2(248, 0)
 rotation = -1.5708
 
 [node name="Top" parent="ProjectileKillBorder" instance=ExtResource("7_36u52")]
-position = Vector2(0, -160)
+position = Vector2(0, -281)
 rotation = 3.14159
 
 [node name="Bottom" parent="ProjectileKillBorder" instance=ExtResource("7_36u52")]

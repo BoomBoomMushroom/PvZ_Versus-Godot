@@ -5,9 +5,8 @@ res://scenes/placement_manager.tscn
 res://scenes/currency_manager.tscn
 res://scenes/almanac.tscn
 res://scenes/ui_startup.tscn
-res://scripts/MiscInfo/almanac.gd
-res://scripts/Plants/peashooter.gd
-res://scripts/placement_manager.gd
 res://scenes/Plants/pea_projectile.tscn
-res://scripts/pea_projectile_logic.gd
 res://scripts/Zombies/normal_zombie.gd
+res://scripts/Plants/peashooter.gd
+res://scripts/MiscInfo/almanac.gd
+res://scripts/placement_manager.gd

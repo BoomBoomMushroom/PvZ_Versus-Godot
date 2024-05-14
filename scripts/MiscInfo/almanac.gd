@@ -52,15 +52,20 @@ const toughnessRates = {
 
 const zombies = {
 	"Target Zombie": {"Toughness": toughnessRates["None"], "Health": 1,
-		"Speed": speeds["NoAI"], "Damage": 0, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
+		"Speed": speeds["NoAI"], "Damage": 0, "Cost": 0, "ImagePath": "res://assets/white_pixel.png",
+		"AttackSpeed": 1},
 	"Basic Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
-		"Speed": speeds["Basic"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
+		"Speed": speeds["Basic"], "Damage": 100, "Cost": 25, "ImagePath": "res://assets/white_pixel.png",
+		"AttackSpeed": 1},
 	"Conehead Zombie": {"Toughness": toughnessRates["Protected"], "Health": 190+370,
-		"Speed": speeds["Basic"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
+		"Speed": speeds["Basic"], "Damage": 100, "Cost": 75, "ImagePath": "res://assets/white_pixel.png",
+		"AttackSpeed": 1},
 	"Buckethead Zombie": {"Toughness": toughnessRates["Hardened"], "Health": 190+1100,
-		"Speed": speeds["Basic"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
+		"Speed": speeds["Basic"], "Damage": 100, "Cost": 100, "ImagePath": "res://assets/white_pixel.png",
+		"AttackSpeed": 1},
 	"Flag Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
-		"Speed": speeds["Flighty"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png"},
+		"Speed": speeds["Flighty"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png",
+		"AttackSpeed": 1},
 }
 
 const zombieEquipment = {

@@ -8,8 +8,8 @@
 size = Vector2(12, 14)
 
 [node name="NormalZombie" type="CharacterBody2D"]
-collision_layer = 132
-collision_mask = 132
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_3i82i")
 metadata/speed = 7.0
 metadata/directionMult = -1.0

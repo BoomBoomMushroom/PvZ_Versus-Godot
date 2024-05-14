@@ -18,9 +18,17 @@ var team1ButtonSelected = null
 var team2ButtonSelected = null
 
 var placements = ["1,2", "1,5", "18,2", "18,5"]
+var placedZombies = []
 
 func _ready():
 	top_left = get_meta("topLeft")
+
+func _process(delta):
+	var newZombies = []
+	for i in range(0, len(placedZombies)):
+		if placedZombies[i] != null:
+			newZombies.append(placedZombies[i])
+	placedZombies = newZombies
 
 func posToCords(pos):
 	var newPos = pos - top_left
@@ -100,6 +108,7 @@ func cursorClickTile(x, y, isTeam1):
 		newZombie.set_meta("zombieLoad", zombieToPlace)
 		newZombie.position = top_left + Vector2( (x-1) * 16, y * 16 - 16 )
 		
+		placedZombies.append(newZombie)
 		add_child(newZombie)
 	
 	#print(str(x) + ", " + str(y) + " - team1=" + str(isTeam1))
