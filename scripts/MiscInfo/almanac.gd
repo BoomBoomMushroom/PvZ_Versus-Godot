@@ -64,6 +64,10 @@ const zombies = {
 		"Speed": speeds["Basic"], "Damage": 100, "Cost": 100, "ImagePath": "res://assets/white_pixel.png",
 		"AttackSpeed": 1, "PlaceRecharge": 30},
 	"Flag Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
+		"Speed": speeds["Basic"], "Damage": 100, "Cost": 300, "ImagePath": "res://assets/white_pixel.png",
+		"AttackSpeed": 1, "PlaceRecharge": 30},
+	
+	"Dev Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
 		"Speed": speeds["Flighty"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png",
 		"AttackSpeed": 1, "PlaceRecharge": 0},
 }

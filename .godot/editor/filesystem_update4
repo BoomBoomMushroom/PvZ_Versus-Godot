@@ -11,3 +11,6 @@ res://scripts/ui_startup.gd
 res://scripts/MiscInfo/almanac.gd
 res://scripts/placement_manager.gd
 res://scripts/Plants/peashooter.gd
+res://scripts/KillArea.gd
+res://scripts/LawnMower.gd
+res://scenes/lawn_mower.tscn

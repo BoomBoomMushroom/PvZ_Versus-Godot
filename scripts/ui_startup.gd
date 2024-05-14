@@ -15,7 +15,7 @@ var team2Choices = [
 	"Conehead Zombie",
 	"Buckethead Zombie",
 	"Flag Zombie",
-	"",
+	"Dev Zombie",
 ]
 
 @onready var almanac = %Almanac
