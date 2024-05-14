@@ -7,4 +7,3 @@ res://scenes/almanac.tscn
 res://scenes/ui_startup.tscn
 res://scenes/place_button.tscn
 res://scenes/lawn_mower.tscn
-res://scripts/LawnMower.gd
