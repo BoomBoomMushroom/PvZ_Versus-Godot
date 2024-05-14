@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8nnp1k3q3jlu"]
+[gd_scene load_steps=20 format=3 uid="uid://b8nnp1k3q3jlu"]
 
 [ext_resource type="PackedScene" uid="uid://cataj7p12ipe" path="res://scenes/team_cursor.tscn" id="1_6o8ip"]
 [ext_resource type="Texture2D" uid="uid://d2ityn6i7pmyi" path="res://assets/white_pixel.png" id="2_alvu4"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c1pwp7g737tpl" path="res://scenes/place_button.tscn" id="12_1a6tm"]
 [ext_resource type="Texture2D" uid="uid://ccqfx4hy1wmb8" path="res://assets/zombie/zombie_drop.png" id="13_2njqu"]
 [ext_resource type="PackedScene" uid="uid://bg4ai4c7sq1ds" path="res://scenes/currency_drop.tscn" id="14_tblc0"]
+[ext_resource type="PackedScene" uid="uid://c5rk5k2bmrhnb" path="res://scenes/lawn_mower.tscn" id="17_lh6xh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qgvo"]
 texture = ExtResource("2_alvu4")
@@ -616,3 +617,29 @@ position = Vector2(195.5, 97)
 scale = Vector2(0.3, 0.3)
 metadata/CursorToAccept = &"team2"
 metadata/DisplayImage = ExtResource("13_2njqu")
+
+[node name="Lawnmowers" type="Node" parent="."]
+
+[node name="LawnMower6" parent="Lawnmowers" instance=ExtResource("17_lh6xh")]
+z_index = 6
+position = Vector2(-150, 40)
+
+[node name="LawnMower5" parent="Lawnmowers" instance=ExtResource("17_lh6xh")]
+z_index = 5
+position = Vector2(-150, 24)
+
+[node name="LawnMower4" parent="Lawnmowers" instance=ExtResource("17_lh6xh")]
+z_index = 4
+position = Vector2(-150, 8)
+
+[node name="LawnMower3" parent="Lawnmowers" instance=ExtResource("17_lh6xh")]
+z_index = 3
+position = Vector2(-150, -8)
+
+[node name="LawnMower2" parent="Lawnmowers" instance=ExtResource("17_lh6xh")]
+z_index = 2
+position = Vector2(-150, -24)
+
+[node name="LawnMower1" parent="Lawnmowers" instance=ExtResource("17_lh6xh")]
+z_index = 1
+position = Vector2(-150, -40)

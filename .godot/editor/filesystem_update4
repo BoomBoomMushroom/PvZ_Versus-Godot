@@ -6,11 +6,5 @@ res://scenes/currency_manager.tscn
 res://scenes/almanac.tscn
 res://scenes/ui_startup.tscn
 res://scenes/place_button.tscn
-res://scripts/button_hover.gd
-res://scripts/ui_startup.gd
-res://scripts/MiscInfo/almanac.gd
-res://scripts/placement_manager.gd
-res://scripts/Plants/peashooter.gd
-res://scripts/KillArea.gd
-res://scripts/LawnMower.gd
 res://scenes/lawn_mower.tscn
+res://scripts/LawnMower.gd
