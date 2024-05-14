@@ -4,17 +4,32 @@ extends Area2D
 @onready var shadow_bg = $ShadowBg
 @onready var image = $Image
 @onready var price = $Price
+@onready var cooldownSprite = $Cooldown
 
 @onready var placement_manager = %PlacementManager
 
 var teamNameLook = ""
 var isEntered = false
 
+var cooldown = 0
+var maxCooldown = -1
+
 func _ready():
 	teamNameLook = get_meta("CursorToAccept")
 
 func _process(delta):
+	if maxCooldown == -1:
+		maxCooldown = get_meta("maxCooldown")
+		return
 	if visible == false: return
+	
+	if cooldown > 0:
+		cooldown -= delta
+		var percent = (cooldown / maxCooldown) + 0.01 # so we dont get a zero width sprite
+		cooldownSprite.position.y = 50 * (1-percent)
+		cooldownSprite.scale.y = percent
+	else:
+		cooldown = 0
 	
 	var actionName = "team1_click"
 	if teamNameLook == "team2": actionName = "team2_click"

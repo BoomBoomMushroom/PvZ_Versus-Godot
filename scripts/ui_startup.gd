@@ -35,6 +35,8 @@ func _ready():
 			plantButton.get_node("Image").texture = load(t1Choice["ImagePath"])
 			plantButton.get_node("Price").text = str(t1Choice["Cost"])
 			plantButton.set_meta("itemName", team1ChoiceName)
+			plantButton.cooldown = 0
+			plantButton.maxCooldown = t1Choice["PlaceRecharge"]
 		else:
 			plantButton.visible = false
 		
@@ -43,10 +45,12 @@ func _ready():
 			zombieButton.get_node("Image").texture = load(t2Choice["ImagePath"])
 			zombieButton.get_node("Price").text = str(t2Choice["Cost"])
 			zombieButton.set_meta("itemName", team2ChoiceName)
+			zombieButton.set_meta("maxCooldown", t2Choice["PlaceRecharge"])
 		elif team2ChoiceName == "Sunflower":
 			var t2Choice = almanac.plants[team2ChoiceName]
 			zombieButton.get_node("Image").texture = load(t2Choice["ImagePath"])
 			zombieButton.get_node("Price").text = str(t2Choice["Cost"])
 			zombieButton.set_meta("itemName", team2ChoiceName)
+			zombieButton.set_meta("maxCooldown", t2Choice["PlaceRecharge"])
 		else:
 			zombieButton.visible = false

@@ -14,6 +14,7 @@ script = ExtResource("1_bstq4")
 metadata/Price = 0
 metadata/CursorToAccept = &"team1"
 metadata/itemName = &""
+metadata/maxCooldown = 0.0
 
 [node name="Highlighted" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -23,6 +24,12 @@ texture = ExtResource("1_e3m6m")
 [node name="ShadowBg" type="Sprite2D" parent="."]
 modulate = Color(0.0705882, 0.0705882, 0.0705882, 0.247059)
 scale = Vector2(2, 1)
+texture = ExtResource("1_e3m6m")
+
+[node name="Cooldown" type="Sprite2D" parent="."]
+modulate = Color(0.498039, 0.498039, 0.498039, 0.843137)
+position = Vector2(0, 49.5)
+scale = Vector2(2, 0.01)
 texture = ExtResource("1_e3m6m")
 
 [node name="Image" type="Sprite2D" parent="."]

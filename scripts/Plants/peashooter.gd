@@ -61,30 +61,19 @@ func _process(delta):
 
 	sinceLastShot -= delta
 	
-	var projectileRaycastColliding = projectileRaycastAndExit.is_colliding()
-	
 	for zombie in placement_manager.placedZombies:
 		var zombiePos = zombie.position
 		var dist = sqrt( pow(position.x-zombiePos.x, 2) + pow(position.y-zombiePos.y, 2) )
 		if dist <= 15:
 			if team1Currency:
+				var diffInY = zombiePos.y - position.y
+				if sign(diffInY) == 1: continue
 				gettingEatenByZombies.append(zombie)
 				zombie.youAreNowEatingOpposingTeam(get_node("."))
 	
-	"""
-	if projectileRaycastColliding:
-		var colliding = projectileRaycastAndExit.get_collider()
-		var collidingPos = colliding.position
-		var dist = sqrt( pow(position.x-collidingPos.x, 2) + pow(position.y-collidingPos.y, 2) )
-		if dist <= 15:
-			if team1Currency:
-				gettingEatenByZombies.append(colliding)
-				colliding.youAreNowEatingOpposingTeam(get_node("."))
-	"""
-	
 	# If colliding shoot.
 	# it should always collide with a zombie because of the collison mask
-	if (forceShoot || projectileRaycastColliding) && sinceLastShot <= 0:
+	if (forceShoot || projectileRaycastAndExit.is_colliding()) && sinceLastShot <= 0:
 		var dist = -1
 		if forceShoot == false:
 			var colliding = projectileRaycastAndExit.get_collider().position

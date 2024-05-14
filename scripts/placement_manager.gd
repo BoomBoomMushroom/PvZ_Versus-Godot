@@ -44,8 +44,12 @@ func removePlacementAtCords(position):
 	placements.remove_at(index)
 
 func cursorClickTile(x, y, isTeam1):
-	if isTeam1 && team1ButtonSelected == null: return
-	if isTeam1==false && team2ButtonSelected == null: return
+	if isTeam1:
+		if team1ButtonSelected == null: return
+		if team1ButtonSelected.cooldown != 0: return
+	else:
+		if team2ButtonSelected == null: return
+		if team2ButtonSelected.cooldown != 0: return
 	
 	var team2Sunflower = isTeam1==false && team2ButtonSelected.get_meta("itemName") == "Sunflower"
 	var isPlacingZombie = team2Sunflower == false and isTeam1==false
@@ -60,6 +64,8 @@ func cursorClickTile(x, y, isTeam1):
 			currency_manager.spendMoney(plantData["Cost"], isTeam1)
 		else:
 			return
+		
+		team1ButtonSelected.cooldown = team1ButtonSelected.maxCooldown
 		
 		var newPlant = PLANT_PREFAB.instantiate()
 		newPlant.set_meta("almanacLoadName", plantToPlace)
@@ -86,6 +92,7 @@ func cursorClickTile(x, y, isTeam1):
 		else:
 			return
 		
+		team2ButtonSelected.cooldown = team2ButtonSelected.maxCooldown
 		var newZombiePlant = PLANT_PREFAB.instantiate()
 		newZombiePlant.set_meta("almanacLoadName", zombieToPlace)
 		newZombiePlant.position = top_left + Vector2( (x-1) * 16, y * 16 - 8 )
@@ -103,6 +110,8 @@ func cursorClickTile(x, y, isTeam1):
 			currency_manager.spendMoney(zombieData["Cost"], isTeam1)
 		else:
 			return
+		
+		team2ButtonSelected.cooldown = team2ButtonSelected.maxCooldown
 		
 		var newZombie = ZOMBIE_PREFAB.instantiate()
 		newZombie.set_meta("zombieLoad", zombieToPlace)
