@@ -46,6 +46,8 @@ func _ready():
 		shootCooldown = plantData["AttackRecharge"]
 		forceShoot = plantData["ForceShoot"]
 		attackDistance = plantData["AttackDistance"]
+		$Sprite2D.texture = load(plantData["ImagePath"])
+		$Sprite2D.scale = Vector2(plantData["ImageScale"], plantData["ImageScale"])
 		if plantData["ShootOnSpawn"] == false:
 			sinceLastShot = shootCooldown
 

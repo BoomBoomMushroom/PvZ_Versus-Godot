@@ -89,26 +89,32 @@ const placeRechargeTime = { # in seconds
 const plants = {
 	"Peashooter": {"Health": 300, "AttackDamage": 20, "AttackRecharge": 1.425, "Cost": 100,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "PEA", "ForceShoot": false,
-		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png", "ShootOnSpawn": true},
+		"AttackDistance": -1, "ImagePath": "res://assets/plants/Peashooter.png",
+		"ImageScale": 0.18, "ShootOnSpawn": true},
 	
 	"Sunflower": {"Health": 300, "AttackDamage": 0, "AttackRecharge": 24.25, "Cost": 50,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "CURRENCY", "ForceShoot": true,
-		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png", "ShootOnSpawn": true},
+		"AttackDistance": -1, "ImagePath": "res://assets/plants/Sunflower.png",
+		"ImageScale": 0.16, "ShootOnSpawn": true},
 	
 	"Cherry Bomb": {"Health": -1, "AttackDamage": 1800, "AttackRecharge": 1.2, "Cost": 150,
 		"PlaceRecharge": placeRechargeTime["Very Slow"], "Projectile": "NONE", "ForceShoot": true,
-		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png", "ShootOnSpawn": false},
+		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png",
+		"ImageScale": 0.12, "ShootOnSpawn": false},
 	
 	"Wall-nut": {"Health": 4000, "AttackDamage": 0, "AttackRecharge": 0, "Cost": 50,
 		"PlaceRecharge": placeRechargeTime["Slow"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png", "ShootOnSpawn": true},
+		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png",
+		"ImageScale": 0.12, "ShootOnSpawn": true},
 	
 	"Potato Mine": {"Health": 300, "AttackDamage": 1800, "AttackRecharge": 15, "Cost": 25,
 		"PlaceRecharge": placeRechargeTime["Slow"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": 8, "ImagePath": "res://assets/white_pixel.png", "ShootOnSpawn": false},
+		"AttackDistance": 8, "ImagePath": "res://assets/white_pixel.png",
+		"ImageScale": 0.12, "ShootOnSpawn": false},
 	
 	"Chomper": {"Health": 300, "AttackDamage": -1, "AttackRecharge": 20, "Cost": 150,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": 24, "ImagePath": "res://assets/white_pixel.png", "ShootOnSpawn": true},
+		"AttackDistance": 24, "ImagePath": "res://assets/white_pixel.png",
+		"ImageScale": 0.12, "ShootOnSpawn": true},
 }
 
