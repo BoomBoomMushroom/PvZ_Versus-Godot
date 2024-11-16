@@ -7,6 +7,7 @@ var health = 100.0
 var toughness = 0
 var damage = 10
 var attackSpeed = 1
+var size = -1
 
 var equipment = []
 var currentEating = null
@@ -30,6 +31,7 @@ func _ready():
 		toughness = randf_range(zombieBase["Toughness"].x, zombieBase["Toughness"].y)
 		damage = zombieBase["Damage"]
 		attackSpeed = zombieBase["AttackSpeed"]
+		size = zombieBase["Size"]
 		sprite_2d.texture = load(zombieBase["ImagePath"])
 
 func _process(delta):
@@ -53,7 +55,9 @@ func _physics_process(delta):
 	move_and_slide()
 
 func youAreNowEatingOpposingTeam(eatingNode):
-	# Node we are eating if we want it ig ¯\_ツ)_/¯
+	if currentEating != null:
+		return
+	# Node we are eating if we want it ig ¯\_(ツ)_/¯
 	print("guess im eating something now!")
 	currentEating = eatingNode
 
@@ -62,15 +66,21 @@ func releasedFromEatingDuties():
 	# Either you were moved out of place or the plant died (shoveled or ate)
 	currentEating = null
 
-func _on_hit_collide_body_entered(body):
-	if body.get_meta("isTeam1") == false: return
-	var damage = body.get_meta("damage")
-	
+func takeDamage(damage):
 	if toughness > 0:
 		toughness -= damage
 		if toughness < 0:
 			health -= -toughness
 	else:
 		health -= damage
+
+func explode(explosionDamage):
+	takeDamage(explosionDamage)
+
+func _on_hit_collide_body_entered(body):
+	if body.get_meta("isTeam1") == false: return
+	var damage = body.get_meta("damage")
+	
+	takeDamage(damage)
 	
 	body.queue_free()

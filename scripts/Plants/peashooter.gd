@@ -14,6 +14,8 @@ var shootCooldown = -1
 var health = 100
 var attackDamage = 10
 var attackDistance = -1
+var shotsFired = 0
+var canZombiesEatMe = true
 
 var sinceLastShot = 0
 var projectile = null
@@ -21,6 +23,9 @@ var projectile = null
 var forceShoot = false
 var currencyShot = false
 var team1Currency = false
+
+var almanacLoadName = ""
+var plantData = {}
 
 var gettingEatenByZombies = []
 
@@ -30,7 +35,6 @@ func _ready():
 	placement_manager = get_node("/root/Game/Managers/PlacementManager")
 	almanac = get_node("/root/Almanac")
 	
-	
 	if get_meta("readMetadata"):
 		shootCooldown = get_meta("shootCooldown")
 		projectile = get_meta("projectile")
@@ -38,15 +42,23 @@ func _ready():
 		currencyShot = get_meta("currencyShot")
 		team1Currency = get_meta("isTeam1")
 	
-	var almanacLoadName = get_meta("almanacLoadName")
+	almanacLoadName = get_meta("almanacLoadName")
+	get_node(".").name = almanacLoadName
 	if almanacLoadName != "":
-		var plantData = almanac.plants[almanacLoadName]
+		plantData = almanac.plants[almanacLoadName]
 		health = plantData["Health"]
 		attackDamage = plantData["AttackDamage"]
 		shootCooldown = plantData["AttackRecharge"]
 		forceShoot = plantData["ForceShoot"]
 		attackDistance = plantData["AttackDistance"]
-		$Sprite2D.texture = load(plantData["ImagePath"])
+		canZombiesEatMe = plantData["CanZombiesEatMe"]
+		
+		var imagePath = plantData["ImagePath"]
+		
+		if almanacLoadName == "Sunflower" and team1Currency==false:
+			imagePath = plantData["ZombieImagePath"]
+		
+		$Sprite2D.texture = load(imagePath)
 		$Sprite2D.scale = Vector2(plantData["ImageScale"], plantData["ImageScale"])
 		if plantData["ShootOnSpawn"] == false:
 			sinceLastShot = shootCooldown
@@ -54,24 +66,35 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if health <= 0:
-		for activeEater in gettingEatenByZombies:
-			if activeEater != null: activeEater.releasedFromEatingDuties()
-		gettingEatenByZombies = []
-		placement_manager.removePlacementAtCords(position)
-		queue_free()
-	if shootCooldown == -1 or projectile == null: return
-
-	sinceLastShot -= delta
+		killMyself()
+	else:
+		if almanacLoadName == "Wall-nut":
+			var listOfDamage = plantData["DamagedSpriteList"]
+			for damageSprites in listOfDamage:
+				var toAndFro = damageSprites["Range"]
+				var toHealth = toAndFro[0] * plantData["Health"]
+				var froHealth = toAndFro[1] * plantData["Health"]
+				
+				if health >= toHealth and health < froHealth:
+					$Sprite2D.texture = load(damageSprites["Image"])
+					break
+		elif almanacLoadName == "Potato Mine":
+			var imagePath = plantData["ImagePath"]
+			if shotsFired >= 1:
+				imagePath = plantData["ReadyImagePath"]
+			
+			$Sprite2D.texture = load(imagePath)
+		elif almanacLoadName == "Chomper":
+			var imagePath = plantData["ImagePath"]
+			if sinceLastShot > 0:
+				imagePath = plantData["ChewingImage"]
+			
+			$Sprite2D.texture = load(imagePath)
 	
-	for zombie in placement_manager.placedZombies:
-		var zombiePos = zombie.position
-		var dist = sqrt( pow(position.x-zombiePos.x, 2) + pow(position.y-zombiePos.y, 2) )
-		if dist <= 15:
-			if team1Currency:
-				var diffInY = zombiePos.y - position.y
-				if sign(diffInY) == 1: continue
-				gettingEatenByZombies.append(zombie)
-				zombie.youAreNowEatingOpposingTeam(get_node("."))
+	updateZombiesEatingMe()
+
+	if shootCooldown == -1: return
+	sinceLastShot -= delta
 	
 	# If colliding shoot.
 	# it should always collide with a zombie because of the collison mask
@@ -79,14 +102,85 @@ func _process(delta):
 		var dist = -1
 		if forceShoot == false:
 			var colliding = projectileRaycastAndExit.get_collider().position
-			dist = sqrt( pow(position.x-colliding.x, 2) + pow(position.y-colliding.y, 2) )
+			dist = calcDistance(position, colliding)
 		
 		if attackDistance == -1 || dist <= attackDistance:
-			shootProjectile()
 			sinceLastShot = shootCooldown
+			shootProjectile()
 
+func onMyLevel(pos):
+	var myPos = Vector2(position.x, position.y - 8) # adjust for plants position offset
+	var diffInY = pos.y - myPos.y
+	var dist = calcDistance(myPos, pos)
+	if abs(diffInY) >= 16: return false
+	return true
 
 func shootProjectile():
+	shotsFired += 1
+	
+	if almanacLoadName == "Chomper":
+		var closestZombie = null
+		var closestDist = 9 ** 9
+		for zombie in placement_manager.placedZombies:
+			if zombie.size > plantData["MaxEatSize"]: continue
+			if onMyLevel(zombie.position) == false: continue
+			
+			var dist = calcDistance(position, zombie.position)
+			if closestDist > dist:
+				closestZombie = zombie
+				closestDist = dist
+		
+		if closestZombie:
+			closestZombie.takeDamage(9 ** 9)
+		else:
+			sinceLastShot = 0
+		
+		return
+	
+	var returnFromExplosion = false
+	
+	while true:
+		# account for the += 1 at the beginning of this function
+		if almanacLoadName == "Potato Mine":
+			if (shotsFired-1) == 0:
+				returnFromExplosion = true
+				sinceLastShot = 0
+				shootCooldown = 0
+				canZombiesEatMe = false
+				attackDistance *= 3
+				break
+			else:
+				returnFromExplosion = true
+				for zombie in placement_manager.placedZombies:
+					if onMyLevel(zombie.position) == false: continue
+					
+					var dist = calcDistance(position, zombie.position)
+					if dist <= plantData["AttackDistance"]:
+						returnFromExplosion = false
+				if returnFromExplosion: break
+		
+		if plantData["Projectile"] == "EXPLOSION":
+			for zombie in placement_manager.placedZombies:
+				var zombiePos = zombie.position
+				var dist = calcDistance(position, zombiePos)
+				if onMyLevel(zombie.position) == false: continue
+				if dist <= attackDistance: # Explosion Radius
+					zombie.explode(attackDamage)
+			
+			var explosionAnimation = projectile.instantiate()
+			explosionAnimation.position = position
+			explosionAnimation.scaleToSet = 0.5
+			
+			placement_manager.add_child(explosionAnimation)
+			
+			killMyself()
+			returnFromExplosion = true
+		
+		break
+	if returnFromExplosion: return
+	
+	if projectile == null: return
+	
 	if currencyShot:
 		var teamName = "Team1"
 		if team1Currency == false: teamName = "Team2"
@@ -99,7 +193,28 @@ func shootProjectile():
 		newProjectile.set_meta("damage", attackDamage)
 		newProjectile.set_meta("isTeam1", team1Currency)
 		add_child(newProjectile)
-	
+
+func calcDistance(v1, v2):
+	return sqrt( pow(v2.x-v1.x, 2) + pow(v2.y-v1.y, 2) )
+
+func killMyself():
+	for activeEater in gettingEatenByZombies:
+		if activeEater != null: activeEater.releasedFromEatingDuties()
+	gettingEatenByZombies = []
+	placement_manager.removePlacementAtCords(position)
+	queue_free()
+
+func updateZombiesEatingMe():
+	for zombie in placement_manager.placedZombies:
+		if canZombiesEatMe == false: break
+		
+		var zombiePos = zombie.position
+		var dist = calcDistance(position, zombiePos)
+		if dist <= 15:
+			if team1Currency:
+				if onMyLevel(zombiePos) == false: continue
+				gettingEatenByZombies.append(zombie)
+				zombie.youAreNowEatingOpposingTeam(get_node("."))
 
 func takeDamage(damage):
 	health -= damage

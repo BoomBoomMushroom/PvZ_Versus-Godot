@@ -1,7 +1,7 @@
 extends Node
 
-var team2Currency = 75
-var team1Currency = 75
+var team2Currency = 750
+var team1Currency = 750
 
 var sinceLastDrop = 0
 var random

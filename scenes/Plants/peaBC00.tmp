@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cymyc8ta0yfgt"]
+
+[ext_resource type="Texture2D" uid="uid://d2ityn6i7pmyi" path="res://assets/white_pixel.png" id="1_doplm"]
+[ext_resource type="Script" path="res://scripts/Plants/peashooter.gd" id="1_xpev1"]
+[ext_resource type="PackedScene" uid="uid://l457vkkq647w" path="res://scenes/Plants/pea_projectile.tscn" id="2_6lcep"]
+[ext_resource type="PackedScene" uid="uid://cim8u6x7wb3nd" path="res://scenes/shadow.tscn" id="2_qsy3g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys5rx"]
+size = Vector2(12, 12)
+
+[node name="Peashooter" type="Area2D"]
+collision_layer = 145
+collision_mask = 145
+script = ExtResource("1_xpev1")
+metadata/shootCooldown = 1.0
+metadata/projectile = ExtResource("2_6lcep")
+metadata/forceShoot = false
+metadata/currencyShot = false
+metadata/isTeam1 = false
+metadata/readMetadata = false
+
+[node name="Shadow" parent="." instance=ExtResource("2_qsy3g")]
+position = Vector2(0, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("1_doplm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ys5rx")
+
+[node name="ProjectileExitHere" type="RayCast2D" parent="."]
+position = Vector2(6, -2)
+target_position = Vector2(288, 0)
+collision_mask = 4
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

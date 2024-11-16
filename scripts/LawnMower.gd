@@ -13,6 +13,10 @@ func _ready():
 	triggered = false
 
 func _process(delta):
+	var imagePath = "res://assets/lawn_mower0.png"
+	if triggered: imagePath = "res://assets/lawn_mower1.png"
+	$Sprite2D.texture = load(imagePath)
+	
 	if position.x >= maxX: queue_free()
 
 func _physics_process(delta):

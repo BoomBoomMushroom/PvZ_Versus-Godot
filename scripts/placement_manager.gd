@@ -8,6 +8,7 @@ extends Node
 
 const PEA_PROJECTILE = preload("res://scenes/Plants/pea_projectile.tscn")
 const CURRENCY_PROJECTILE = preload("res://scenes/currency_drop.tscn")
+const EXPLOSION_PROJECTILE = preload("res://scenes/explosion_animation.tscn")
 
 const PLANT_PREFAB = preload("res://scenes/Plants/peashooter.tscn")
 const ZOMBIE_PREFAB = preload("res://scenes/Zombie/normal_zombie.tscn")
@@ -72,12 +73,16 @@ func cursorClickTile(x, y, isTeam1):
 		newPlant.position = top_left + Vector2( (x-1) * 16, y * 16 - 8 )
 		
 		var projectile = null
-		if plantData["Projectile"] == "PEA":
+		var projectileType = plantData["Projectile"]
+		if projectileType == "PEA":
 			projectile = PEA_PROJECTILE
 			newPlant.currencyShot = false
-		elif plantData["Projectile"] == "CURRENCY":
+		elif projectileType == "CURRENCY":
 			projectile = CURRENCY_PROJECTILE
 			newPlant.currencyShot = true
+		elif projectileType == "EXPLOSION":
+			projectile = EXPLOSION_PROJECTILE
+			newPlant.currencyShot = false
 		
 		newPlant.projectile = projectile
 		newPlant.team1Currency = isTeam1

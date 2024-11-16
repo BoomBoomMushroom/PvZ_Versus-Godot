@@ -50,26 +50,32 @@ const toughnessRates = {
 	"Ultra-Undying": Vector2(29501, 30000),
 }
 
+const zombieSize = {
+	"Imp": 10,
+	"Normal": 20,
+	"Giant": 30,
+}
+
 const zombies = {
 	"Target Zombie": {"Toughness": toughnessRates["None"], "Health": 1,
 		"Speed": speeds["NoAI"], "Damage": 0, "Cost": 0, "ImagePath": "res://assets/white_pixel.png",
-		"AttackSpeed": 1, "PlaceRecharge": 0},
+		"AttackSpeed": 1, "PlaceRecharge": 0, "Size": zombieSize["Normal"]},
 	"Basic Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
 		"Speed": speeds["Basic"], "Damage": 100, "Cost": 25, "ImagePath": "res://assets/white_pixel.png",
-		"AttackSpeed": 1, "PlaceRecharge": 7.5},
+		"AttackSpeed": 1, "PlaceRecharge": 7.5, "Size": zombieSize["Normal"]},
 	"Conehead Zombie": {"Toughness": toughnessRates["Protected"], "Health": 190+370,
 		"Speed": speeds["Basic"], "Damage": 100, "Cost": 75, "ImagePath": "res://assets/white_pixel.png",
-		"AttackSpeed": 1, "PlaceRecharge": 30},
+		"AttackSpeed": 1, "PlaceRecharge": 30, "Size": zombieSize["Normal"]},
 	"Buckethead Zombie": {"Toughness": toughnessRates["Hardened"], "Health": 190+1100,
 		"Speed": speeds["Basic"], "Damage": 100, "Cost": 100, "ImagePath": "res://assets/white_pixel.png",
-		"AttackSpeed": 1, "PlaceRecharge": 30},
+		"AttackSpeed": 1, "PlaceRecharge": 30, "Size": zombieSize["Normal"]},
 	"Flag Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
 		"Speed": speeds["Basic"], "Damage": 100, "Cost": 300, "ImagePath": "res://assets/white_pixel.png",
-		"AttackSpeed": 1, "PlaceRecharge": 30},
+		"AttackSpeed": 1, "PlaceRecharge": 30, "Size": zombieSize["Normal"]},
 	
 	"Dev Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
 		"Speed": speeds["Flighty"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png",
-		"AttackSpeed": 1, "PlaceRecharge": 0},
+		"AttackSpeed": 1, "PlaceRecharge": 0, "Size": zombieSize["Giant"]},
 }
 
 const zombieEquipment = {
@@ -85,36 +91,47 @@ const placeRechargeTime = { # in seconds
 	"Slow": 30,
 	"Very Slow": 50,
 }
+const walnutDamageSpriteList = [
+	{"Range": [0.00, 0.25], "Image": "res://assets/plants/Walnut3.png"},
+	{"Range": [0.25, 0.50], "Image": "res://assets/plants/Walnut2.png"},
+	{"Range": [0.50, 0.75], "Image": "res://assets/plants/Walnut1.png"},
+	{"Range": [0.75, 1.00], "Image": "res://assets/plants/Walnut0.png"},
+]
+
+# 
 
 const plants = {
 	"Peashooter": {"Health": 300, "AttackDamage": 20, "AttackRecharge": 1.425, "Cost": 100,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "PEA", "ForceShoot": false,
 		"AttackDistance": -1, "ImagePath": "res://assets/plants/Peashooter.png",
-		"ImageScale": 0.18, "ShootOnSpawn": true},
+		"ImageScale": 0.18, "ShootOnSpawn": true, "CanZombiesEatMe": true},
 	
 	"Sunflower": {"Health": 300, "AttackDamage": 0, "AttackRecharge": 24.25, "Cost": 50,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "CURRENCY", "ForceShoot": true,
-		"AttackDistance": -1, "ImagePath": "res://assets/plants/Sunflower.png",
-		"ImageScale": 0.16, "ShootOnSpawn": true},
+		"AttackDistance": -1, "ImagePath": "res://assets/plants/Sunflower.png", "ZombieImagePath": "res://assets/zombie/Gravestone.png",
+		"ImageScale": 0.16, "ShootOnSpawn": false, "CanZombiesEatMe": true},
 	
-	"Cherry Bomb": {"Health": -1, "AttackDamage": 1800, "AttackRecharge": 1.2, "Cost": 150,
-		"PlaceRecharge": placeRechargeTime["Very Slow"], "Projectile": "NONE", "ForceShoot": true,
-		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png",
-		"ImageScale": 0.12, "ShootOnSpawn": false},
+	"Cherry Bomb": {"Health": 9**9, "AttackDamage": 1800, "AttackRecharge": 1.2, "Cost": 150,
+		"PlaceRecharge": placeRechargeTime["Very Slow"], "Projectile": "EXPLOSION", "ForceShoot": true,
+		"AttackDistance": 32, "ImagePath": "res://assets/plants/CherryBomb.png",
+		"ImageScale": 0.12, "ShootOnSpawn": false, "CanZombiesEatMe": false},
 	
 	"Wall-nut": {"Health": 4000, "AttackDamage": 0, "AttackRecharge": 0, "Cost": 50,
 		"PlaceRecharge": placeRechargeTime["Slow"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": -1, "ImagePath": "res://assets/white_pixel.png",
-		"ImageScale": 0.12, "ShootOnSpawn": true},
+		"AttackDistance": -1, "ImagePath": "res://assets/plants/Walnut0.png",
+		"ImageScale": 0.17, "ShootOnSpawn": true, "CanZombiesEatMe": true,
+		"DamagedSpriteList": walnutDamageSpriteList},
 	
 	"Potato Mine": {"Health": 300, "AttackDamage": 1800, "AttackRecharge": 15, "Cost": 25,
-		"PlaceRecharge": placeRechargeTime["Slow"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": 8, "ImagePath": "res://assets/white_pixel.png",
-		"ImageScale": 0.12, "ShootOnSpawn": false},
+		"PlaceRecharge": placeRechargeTime["Slow"], "Projectile": "EXPLOSION", "ForceShoot": true,
+		"AttackDistance": 16, "ImagePath": "res://assets/plants/PotatoMine0.png",
+		"ImageScale": 0.12, "ShootOnSpawn": false, "CanZombiesEatMe": true,
+		"ReadyImagePath": "res://assets/plants/PotatoMine1.png"},
 	
 	"Chomper": {"Health": 300, "AttackDamage": -1, "AttackRecharge": 20, "Cost": 150,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": 24, "ImagePath": "res://assets/white_pixel.png",
-		"ImageScale": 0.12, "ShootOnSpawn": true},
+		"AttackDistance": 24, "ImagePath": "res://assets/plants/Chomper0.png",
+		"ImageScale": 0.18, "ShootOnSpawn": true, "CanZombiesEatMe": true,
+		"ChewingImage": "res://assets/plants/Chomper1.png", "MaxEatSize": zombieSize["Normal"]},
 }
 

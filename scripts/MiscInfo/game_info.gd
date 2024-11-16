@@ -6,3 +6,10 @@
 # 5 = Hit zombies projectile
 # 6 = UI Elements
 # 7 = Kill Currency Outside Border
+
+# Sprites
+# 100x100 pixels
+
+# Z-Indexes
+# Tilemap = -1
+
