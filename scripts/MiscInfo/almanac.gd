@@ -61,7 +61,7 @@ const zombies = {
 		"Speed": speeds["NoAI"], "Damage": 0, "Cost": 0, "ImagePath": "res://assets/white_pixel.png",
 		"AttackSpeed": 1, "PlaceRecharge": 0, "Size": zombieSize["Normal"]},
 	"Basic Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
-		"Speed": speeds["Basic"], "Damage": 100, "Cost": 25, "ImagePath": "res://assets/white_pixel.png",
+		"Speed": speeds["Basic"], "Damage": 100, "Cost": 25, "ImagePath": "res://assets/zombie/Zombie.png",
 		"AttackSpeed": 1, "PlaceRecharge": 7.5, "Size": zombieSize["Normal"]},
 	"Conehead Zombie": {"Toughness": toughnessRates["Protected"], "Health": 190+370,
 		"Speed": speeds["Basic"], "Damage": 100, "Cost": 75, "ImagePath": "res://assets/white_pixel.png",
@@ -74,8 +74,8 @@ const zombies = {
 		"AttackSpeed": 1, "PlaceRecharge": 30, "Size": zombieSize["Normal"]},
 	
 	"Dev Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
-		"Speed": speeds["Flighty"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/white_pixel.png",
-		"AttackSpeed": 1, "PlaceRecharge": 0, "Size": zombieSize["Giant"]},
+		"Speed": speeds["Flighty"], "Damage": 100, "Cost": 0, "ImagePath": "res://assets/zombie/Zombie.png",
+		"AttackSpeed": 1, "PlaceRecharge": 0, "Size": zombieSize["Normal"]},
 }
 
 const zombieEquipment = {
@@ -130,7 +130,7 @@ const plants = {
 	
 	"Chomper": {"Health": 300, "AttackDamage": -1, "AttackRecharge": 20, "Cost": 150,
 		"PlaceRecharge": placeRechargeTime["Fast"], "Projectile": "NONE", "ForceShoot": false,
-		"AttackDistance": 24, "ImagePath": "res://assets/plants/Chomper0.png",
+		"AttackDistance": 30, "ImagePath": "res://assets/plants/Chomper0.png",
 		"ImageScale": 0.18, "ShootOnSpawn": true, "CanZombiesEatMe": true,
 		"ChewingImage": "res://assets/plants/Chomper1.png", "MaxEatSize": zombieSize["Normal"]},
 }

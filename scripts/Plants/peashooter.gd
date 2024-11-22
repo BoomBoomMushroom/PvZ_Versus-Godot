@@ -120,7 +120,7 @@ func shootProjectile():
 	
 	if almanacLoadName == "Chomper":
 		var closestZombie = null
-		var closestDist = 9 ** 9
+		var closestDist = 9 ** 9 # Big because dist should get smaller; would be inf if we had infinity :(
 		for zombie in placement_manager.placedZombies:
 			if zombie.size > plantData["MaxEatSize"]: continue
 			if onMyLevel(zombie.position) == false: continue

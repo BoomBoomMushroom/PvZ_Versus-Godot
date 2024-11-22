@@ -18,7 +18,7 @@ var top_left = Vector2.ZERO
 var team1ButtonSelected = null
 var team2ButtonSelected = null
 
-var placements = ["1,2", "1,5", "18,2", "18,5"]
+var placements = ["1,2", "1,5", "13,2", "13,5"]
 var placedZombies = []
 
 func _ready():
