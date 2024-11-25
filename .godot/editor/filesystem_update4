@@ -1,12 +1,2 @@
-res://scenes/game.tscn
 res://scenes/almanac.tscn
-res://scenes/globals.tscn
-res://scenes/ui_startup.tscn
-res://scenes/Plants/peashooter.tscn
-res://scenes/Zombie/normal_zombie.tscn
-res://scenes/placement_manager.tscn
-res://scenes/currency_manager.tscn
-res://scenes/lawn_mower.tscn
-res://scripts/placement_manager.gd
-res://scripts/Plants/peashooter.gd
 res://scripts/MiscInfo/almanac.gd

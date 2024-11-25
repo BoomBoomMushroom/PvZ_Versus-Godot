@@ -56,6 +56,7 @@ const zombieSize = {
 	"Giant": 30,
 }
 
+# Costs: https://youtu.be/ckDHQQ7PXCo?t=88
 const zombies = {
 	"Target Zombie": {"Toughness": toughnessRates["None"], "Health": 1,
 		"Speed": speeds["NoAI"], "Damage": 0, "Cost": 0, "ImagePath": "res://assets/white_pixel.png",
@@ -71,6 +72,9 @@ const zombies = {
 		"AttackSpeed": 1, "PlaceRecharge": 30, "Size": zombieSize["Normal"]},
 	"Flag Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
 		"Speed": speeds["Basic"], "Damage": 100, "Cost": 300, "ImagePath": "res://assets/white_pixel.png",
+		"AttackSpeed": 1, "PlaceRecharge": 30, "Size": zombieSize["Normal"]},
+	"Gargantuar": {"Toughness": toughnessRates["Great"], "Health": 3600,
+		"Speed": speeds["Hungry"], "Damage": 99999, "Cost": 2500, "ImagePath": "res://assets/white_pixel.png",
 		"AttackSpeed": 1, "PlaceRecharge": 30, "Size": zombieSize["Normal"]},
 	
 	"Dev Zombie": {"Toughness": toughnessRates["Average"], "Health": 190,
