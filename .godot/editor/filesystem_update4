@@ -1,2 +1,2 @@
-res://scenes/almanac.tscn
-res://scripts/MiscInfo/almanac.gd
+res://scenes/Zombie/normal_zombie.tscn
+res://scripts/Zombies/normal_zombie.gd
